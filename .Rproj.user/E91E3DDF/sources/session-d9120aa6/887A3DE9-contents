@@ -1,0 +1,379 @@
+---
+title: |
+  \vspace{5cm} <center> GIS 563 </center>
+  <center> Local Statistical Modeling </center>
+  <center> Final Project </center>
+  
+author: "Nathan A. Nguyen"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: 
+  pdf_document:
+    keep_tex: true
+header-includes:
+  - "\\usepackage{amsmath}"
+  - \usepackage{sectsty} \allsectionsfont{\centering}
+---
+
+\newpage
+
+```{r setup, include=FALSE, eval = TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+rm(list = ls()); gc()
+
+library(tidyverse)
+library(rio)
+library(here)
+library(sf)
+library(spdep)
+library(tigris)
+library(colorspace)
+library(knitr)
+library(kableExtra)
+library(stargazer)
+library(ggfortify)
+
+options(tigris_use_cache = TRUE)
+
+`%nin%` = Negate(`%in%`)
+
+# import helper functions
+source(here::here('scripts', 'fip_cd_check.R'))
+source(here::here('scripts', 'fip_padder.R'))
+```
+
+```{r, eval = T, echo = F, message = F, warning  = F}
+#### load datasets
+mgwr_raw <- import(here('output-data', 'mgwr-data-raw.csv'))
+
+mgwr_stand <- import(here('output-data', 'mgwr-data-standardized.csv'))
+
+# import mgwr results to plot residuals and compute Moran's I
+mgwr_results <- import(here('mgwr-wo-monte-carlo-results', 'MGWR_session_results.csv'))
+```
+
+# [Introduction]{.underline}
+
+This write-up serves as the second part submission for the final project in the class.
+
+For this project, an empirical application of MGWR was performed and compared with a global OLS model. The response variable was the estimated median household income in 2021, and the spatial units were United States counties. Details about the dataset and any preprocessing that occurred will be discussed. The methods section will cover the models explored and the software implementation as well as what R packages were used for mapping for those who are interested. Finally this write-up will close with brief discussions of the results and any room for improvements should this be a real academic project.
+
+The model presented in this write-up will deviate slightly from the model presented in part 1. The modifications were made to accommodate critiques while presenting -- namely the use of poverty level as a predictor. This variable was replaced with the percentage of the population in a respective county that are considered in an urban area. During the initial presentation, the Monte Carlo test was still running, so no results were available.
+
+Due to time constraints, and unexpected events, a Monte Carlo test for the existence of spatial variability was not performed. The Monte Carlo test for the first version of this model did complete eventually, and it suggested that the only variable with evidence for spatial variability was the all age poverty levels in 2021. I included this variable initially because although poverty is obviously associated with income, I wanted to see whether or not the effects of poverty on median income were uniform across space or if they changed based on geography.
+
+That being said, a rigorous test for spatial variance will not be provided for this second model presented.
+
+\newpage
+
+# [Data Details]{.underline}
+
+The dataset used for analysis is an amalgamation of various datasets from the United States Census Bureau/United States Department of Commerce, the American Community Survey, the United States Department of Agriculture's Economic Research Service, and from a 2022 paper by Fotheringham et al.,^1^ .
+
+The area of study were United States counties, and only mainland counties were intended to be retained in the dataset. For transparency, most of Connecticut is missing and this issue was not observed until after-the-fact. The missingness is attributed to the non-standardization of FIP codes among the various datasets used. Some locations in Connecticut are not considered true counties and are "county equivalents", which was not known a-priori.
+
+After preprocessing, the final dataset consisted of 3,100 locations. Some R functions were defined in order to assist the preprocessing step – namely cleaning of FIP codes.
+
+The chosen response variable was the estimated median household income in the year 2021 and was provided by the Census Bureau/Department of Commerce^6^. Nine predictors were included in the models:
+
+1.  Gini Index (1-year estimate; 2021)
+
+2.  Population Density (natural logged)
+
+3.  Percent of Households with Internet Access (5-year estimate; 2017-2022)^2^
+
+4.  Percent of Population with Bachelors Degree or Higher^5^
+
+5.  Percent of Population Living in an Urban Area(1-year estimate; 2020)^6^
+
+6.  Sex Ratio (Male-to-Female) (5-year estimate; 2017-2022)^4^
+
+7.  Median Age (5-year estimate; 2017-2022)^4^
+
+8.  Percent Population that is Black (5-year estimate; 2017-2022)^4^
+
+9.  Percent Population that is Hispanic or Latino (5-year estimate; 2017-2022)^4^
+
+```{r, eval = T, echo = F, warning = F, message = F}
+# create summary statistics table
+variables <- c("med_income21", "gini", "ln_pop_den", 
+               "pct_internet_access21", "pct_bach_higher_18_22", 
+               "pct_pop_urban20", "sex_ratio17_21", 
+               "median_age17_21", "pct_blck17_21", "pct_hisplat17_21")
+
+variable_labels <- c(
+  "med_income21" = "Median Income (21)",
+  "gini" = "Gini Index (17-21)",
+  "ln_pop_den" = "Population Density (Natural Log)",
+  "pct_internet_access21" = "% Internet Access (21)",
+  "pct_bach_higher_18_22" = "% with Bachelor's Degree or Higher (18–22)",
+  "pct_pop_urban20" = "% Population in Urban Area (20)",
+  "sex_ratio17_21" = "Sex Ratio (Male:Female, 17–21)",
+  "median_age17_21" = "Median Age (17–21)",
+  "pct_blck17_21" = "% Black (17–21)",
+  "pct_hisplat17_21" = "% Hispanic or Latino (17–21)"
+)
+
+summary_table <- mgwr_raw %>%
+  select(all_of(variables)) %>%
+  pivot_longer(cols = everything(), names_to = "Variable", values_to = "Value") %>%
+  group_by(Variable) %>%
+  summarize(
+    Min = round(min(Value, na.rm = TRUE), 2),
+    Mean = round(mean(Value, na.rm = TRUE), 2),
+    Median = round(median(Value, na.rm = TRUE), 2),
+    Max = round(max(Value, na.rm = TRUE), 2),
+    .groups = "drop"
+  ) %>%
+  mutate(Variable = factor(Variable, levels = variables)) %>%  # Reorder by `variables`
+  arrange(Variable) %>%
+  mutate(Variable = recode(Variable, !!!variable_labels))  # Rename variables
+
+kable(summary_table, align = c('l', 'c', 'c', 'c', 'c'), caption = 'Summary Statistics for Selected Variables') %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = F)
+```
+
+\newpage
+
+```{r, echo = F, eval = T, fig.cap='Estimated Median Household Income (2021)', fig.align='center', out.width='100%', fig.pos='H'}
+include_graphics(here('images', 'median-income21.png'))
+```
+
+Figure 1 shows the estimated median household income in 2021. By inspection, there appears to be some clustering of this random variable. For example, we see that the median household income is generally higher in the north-east coast of the United States, indicated by the darker coloring, when compared to the deep south and Appalachia, indicated by the lighter shading. The west coast, generally, has higher income as well.
+
+This is likely due to the fact that the north-east and west-coast are more developed regions of the country with high paying industries like finance and technology while the regions with lower income are more rural and have declining industries e.g., manufacturing and mining.
+
+\newpage
+
+Furthermore, the regions with higher median household income generally have higher educational attainment as well. Figure 2 is evidence of this:
+
+```{r, echo = F, eval = T, fig.cap='Percent of Population Having Bachelors Degree or Higher', fig.align='center', out.width='100%', fig.pos='H'}
+include_graphics(here('images', 'bach-higher-18-22.png'))
+```
+
+\newpage
+
+# [Methods]{.underline}
+
+A global OLS and MGWR model was fit on the dataset and compared to one another. The variance explained in both models were compared as well as the AICc. All variables were standardized to have mean zero and and variance one. Standardization was performed in R.
+
+Ad-hoc tests were used in place of a Monte Carlo test:\
+
+$$
+\begin{aligned}
+IQR_{k} &> 2\times SE_{k-global}
+\end{aligned}
+$$
+
+Corrected $\alpha$-values were computed following:
+
+$$
+\begin{aligned}
+\alpha_{j} &= \frac{\alpha^{*}}{ENP_{j}}
+\end{aligned}
+$$
+
+where $\alpha^{*} = 0.05$ and the $ENP_{j}$ were obtained from the `txt` file from the MGWR 2.2 session.
+
+## [Global OLS Model]{.underline}
+
+All features in the model are of order one, and no interaction terms were considered.
+
+```{r, eval = T, echo = F, message=F, warning = F, results='asis'}
+global_ols <- lm(med_income21 ~ gini + ln_pop_den + pct_internet_access21 + pct_bach_higher_18_22 + pct_pop_urban20 + sex_ratio17_21 + median_age17_21 + pct_blck17_21 + pct_hisplat17_21, data = mgwr_stand)
+
+# stargazer(
+#   global_ols, 
+#   type = 'latex',
+#   title = 'Global OLS Results',
+#   digits = 2,
+#   # align = TRUE,
+#   # no.space = TRUE,
+#   omit.stat = c("f", "ser"),
+#   covariate.labels = c(
+#     "Gini Index (17–21)",
+#     "Population Density (Natural Log)",
+#     "% Internet Access (21)",
+#     "% with Bachelor's Degree or Higher (18–22)",
+#     "% Population in Urban Area (20)",
+#     "Sex Ratio (Male:Female, 17–21)",
+#     "Median Age (17–21)",
+#     "% Black (17–21)",
+#     "% Hispanic or Latino (17–21)"
+#   ),
+#   dep.var.labels = "Median Income (21)",
+#   dep.var.caption = "Dependent Variable:",
+#   label = "tab:global_ols",
+#   notes = c(
+#     "Standard errors are reported in parentheses.",
+#     "Significance codes: *** p < 0.01, ** p < 0.05, * p < 0.1"
+#   ),
+#   notes.align = "l"
+# )
+```
+
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.5} % Adjust row spacing
+\centering
+\caption{Global OLS Results}
+\label{tab:ols_results}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Variable} & \textbf{Estimate} & \textbf{Std. Error} & \textbf{t-value} & \textbf{p-value} \\ \hline
+Intercept             & 5.87e-17       & 1.00e-02         & 0.000             & 1.000 \\ 
+Gini Index (17–21)    & -0.259         & 0.011            & -22.595           & $<$2e-16 *** \\ 
+Population Density (Log) & 0.179         & 0.016            & 11.468           & $<$2e-16 *** \\ 
+\% Internet Access (21)  & 0.237         & 0.015            & 15.627           & $<$2e-16 *** \\ 
+\% Bachelor's Degree or Higher (18–22) & 0.579 & 0.014   & 41.660           & $<$2e-16 *** \\ 
+\% Population in Urban Area (20) & -0.124 & 0.018        & -6.994           & 3.26e-12 *** \\ 
+Sex Ratio (Male:Female, 17–21) & 0.351   & 0.107          & 3.295            & 0.000997 *** \\ 
+Median Age (17–21)     & 0.099         & 0.118            & 0.845            & 0.398 \\ 
+\% Black (17–21)       & -0.059        & 0.012            & -4.929           & 8.70e-07 *** \\ 
+\% Hispanic or Latino (17–21) & 0.080    & 0.012          & 6.975            & 3.73e-12 *** \\ 
+\hline
+\multicolumn{5}{l}{\textit{Residual Standard Error:} 0.5578 on 3090 degrees of freedom} \\
+\multicolumn{5}{l}{\textit{Multiple R-squared:} 0.6897, \textit{Adjusted R-squared:} 0.6888} \\
+\multicolumn{5}{l}{\textit{F-statistic:} 763.3 on 9 and 3090 DF, \textit{p-value:} $<$2.2e-16} \\
+\hline
+\multicolumn{5}{l}{\textbf{Signif. Codes:} *** $p < 0.001$, ** $p < 0.01$, * $p < 0.05$} \\
+\end{tabular}
+\end{table}
+
+According to the global model, all variables are statistically significant at the level of $0.05$ except for the median age variable. Furthermore, the model is able to explain about $69\%$ of the variance in the data (adjusted and non-adjusted $R^{2}$). Despite these, seemingly, good indicators, I'm skeptical about the usefulness of the model. With sufficiently large sample sizes, any trivial relationship is "statistically significant", and other methods for evaluations should be considered e.g., k-fold cross-validation, re-sampling methods, etc. Alternatively, looking at the effect sizes and confidence intervals of the parameter estimates might be more relevant to determine how "good" a model is, but this is likely domain specific, and so I have no further comments on this.
+
+\newpage
+
+The standardized $\beta$s represent the expected change in the response variable $Y$ (in standard deviations) for a one standard deviation increase/decrease in some $k^{th}$ predictor variable while holding the other $k-1$ variables constant.
+
+The positive, and significant, set of coefficients is:
+
+$\{\text{Population Density, Internet Access, Bachelors Degree or Higher, Sex Ratio, Percent Hispanic or Latino}\}$
+
+For example, a one standard deviation increase in the percentage of the population with a bachelor's degree or higher is associated with a 0.58 standard deviation increase in the expected standardized median income, holding all other variables constant. This finding underscores the critical role of higher education in driving income levels and aligns with contemporary socioeconomic theories.
+
+Furthermore, among the set of positive and significant predictors, having a bachelors degree or higher has the largest absolute magnitude, suggesting that if we had a homogeneous population, education attainment might be the most important factor in one's possible earnings. This conclusion makes sense because careers that, generally, pay more are more technical and require at least a bachelors degree to obtain e.g., software engineering, banking, and so on.
+
+On the other hand, the set of negative and significant coefficients is:
+
+$\{\text{Gini Index, Percent of Population Living in Urban Area, Percent Population that is Black}\}$
+
+The predictor having the most negative effect is the Gini Index (income inequality). A one standard deviation increase in the Gini Index will result in a 0.26 standard deviation decrease in the expected standardized median income, holding all other variables constant. This is a logical conclusion given that if the location has high income inequality, then it would follow that the median income be lower as there is a larger spread between high income households and low income households. Since the median is a robust measure of central tendency, one would observe more households with smaller median incomes.
+
+\newpage
+
+```{r, eval=T, echo=F, warning=F, message=F, fig.width=12, fig.height=8, fig.align='center', fig.cap='Global OLS Diagnostics', fig.pos='H'}
+autoplot(global_ols)
+```
+
+Figure 3 contains various diagnostic plots for the global OLS model. Based on the residuals vs. fitted values plot, the assumption of constant variance appears to be violated i.e., the existence of heteroskedasticity is likely. This is observed by the funnel structure in the residuals for larger predicted values of $Y$. Additionally, the QQ plot of the residuals suggests a departure from normality, which is a key assumption in linear regression. The distribution of residuals has heavy right tails and skinnier left tails. A normal distribution should be roughly symmetric, and if the model was correctly specified, the observed residuals would hug the theoretical line more tightly.
+
+There are two possible scenarios:
+
+1.  spatial autocorrelation
+
+2.  first-order and main effects are not enough
+
+```{r, eval=T, echo=F, warning=F, message=F}
+# compute global ols moran's I to detect spatial autocorrelation
+
+# retrieve us county geometry
+us_counties <- counties(cb = TRUE, year = 2021, class = 'sf')
+
+us_counties <- us_counties %>% 
+  select(GEOID, NAMELSAD, STUSPS, geometry)
+
+# retrive us state geometry and exclude some locations
+us_states <- states(cb = TRUE, year = 2021, class = "sf") %>%
+  st_transform(crs = 5070) %>% 
+  filter(STUSPS %nin% c('AK', 'HI', 'DC', 'MP', 'VI', 'PR', 'GU', 'AS'))
+
+# fix fip codes
+mgwr_results <- add_fips_padding(df = mgwr_results)
+
+# merge datasets
+df_merged <- mgwr_results %>% 
+  left_join(us_counties, by = c('fips_cd' = 'GEOID'))
+
+df_merged <- st_as_sf(df_merged)
+
+nb <- poly2nb(df_merged, queen = TRUE)
+
+
+weights <- nb2listw(nb, style = 'W', zero.policy = TRUE)
+
+# ols Moran's I
+ols_moran <- moran(df_merged$ols_residual, weights, length(nb), Szero(weights))[1]
+# ols_moran
+
+ols_moran_test <- moran.test(df_merged$ols_residual                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                negative impact on the median household income in the eastern side of the country, but the opposite effect is observed for almost one-half of the country west of Illinois.
+
+```{r, echo = F, eval = T, fig.cap='Significant Local Percent with Internet Access Estimates', fig.align='center', out.width='100%', fig.pos='H'}
+include_graphics(here('images', 'local-param' ,'sig-internet-access.png'))
+```
+
+The effects of internet access are regional, given that the bandwidth is essentially as large as the number of locations (3,100). Having access to internet indicates higher median income likely an indication of more developed localities.
+
+```{r, echo = F, eval = T, fig.cap='Significant Local Percent with Bachelors Degree or Higher Estimates', fig.align='center', out.width='100%', fig.pos='H'}
+include_graphics(here('images', 'local-param' ,'sig-pct-bach-higher.png'))
+```
+
+The effects of having a bachelor's degree or higher are very local given its small bandwidths and clustering observed in the map. Having more education has a much stronger positive impact on one's median income in Colorado, New Jersey, and some parts of Ohio wen compared to Arizona and Idaho for example. It's also interesting to note the clustering in the Appalachia area as well. Some pockets with higher education attainment have higher income levels compared to neighbors in the area.
+
+```{r, echo = F, eval = T, fig.cap='Significant Local Sex Ratio (Male-to-Female) Estimates', fig.align='center', out.width='100%', fig.pos='H'}
+include_graphics(here('images', 'local-param' ,'sig-sex-ratio.png'))
+```
+
+
+```{r, echo = F, eval = T, fig.cap='Significant Local Median Age Estimates', fig.align='center', out.width='100%', fig.pos='H'}
+include_graphics(here('images', 'local-param' ,'sig-median-age.png'))
+```
+
+
+\newpage
+
+# [Conclusions]{.underline}
+
+## [Improvements]{.underline}
+
+If I were to write a real paper on something like this, I'd probably change my response variable to something that reflects discretionary income more e.g., the median household income after adjusting for housing costs. While people in California, New York, and Washington might make a lot more than say, someone living in Alabama, people living in California, New York, or Washington likely have a much larger housing cost when compared to someone living in Alabama.
+
+A transformation of some of the predictor variables might be warranted given some non-linearity observed in both OLS and MGWR diagnostic plots.
+
+Finally, a thorough literature review would have been beneficial in order to understand the unique socioeconomic profiles of the US counties. This would have aided in better understanding the results of MGWR and/or helped validated existing theories in the literature. A review would have also provided a better foundation for variable selection in the models e.g., including employment industry variables, and so on.
+
+For those who are interesting in creating the maps in R, please refer to my Github Repo: <https://github.com/loafing-cat/gis563-local-stat-model-example>.
+
+The following are the core R libraries for mapping:
+
+```{r, eval = F, echo=T}
+library(tidyverse)
+library(sf)
+library(tigris)
+library(colorspace)
+```
+
+
+\newpage
+
+# [References]{.underline}
+
+1.  Li, Z., & Fotheringham, A. S. (2022). The spatial and temporal dynamics of voter preference determinants in four U.S. presidential elections (2008– 2020). Transactions in GIS, 26, 1609– 628. <https://doi.org/10.1111/tgis.12880>
+
+2.  U.S. Census Bureau. (2022). Internet Subscriptions in Household. American Community Survey, ACS 5-Year Estimates Detailed Tables, Table B28011. Retrieved December 7, 2024, from <https://data.census.gov/table/ACSDT5Y2022.B28011?q=Telephone>, Computer, and Internet Access&g=010XX00US\$0500000.
+
+3.  U.S. Census Bureau. (2021). GINI INDEX OF INCOME INEQUALITY. American Community Survey, ACS 1-Year Estimates Detailed Tables, Table B19083. Retrieved December 7, 2024, from <https://data.census.gov/table/ACSDT1Y2021.B19083?q=gini&g=010XX00US$0400000&moe=false&tp=tr0\r?m??   g   w??t    _keyhttps://www.redditstatic.com/shreddit/en-US/mod-note-overflow-menu-7d383ac2.js 
+https://reddit.com/?A
+?Eo??               ,?ԋr?/ 0
+     ???{        o????W?? ???V?۱ 
+          0T}?`?  ?
+`     1
+ ?}cB   (          ?
+`
+   X%a      
+?`^  ?`^  ?`~  ?	`?	  ?
+a?  $
+  ?%]4%a      
+?a?     $RgB?u   renderOverflowMenuButtona?     Rc?9   render  a?      ?] ?? ??0T) ??a
+  N  `???? ??Se?1            D
+  $   I`?????`
+   L`   ?
+ R???   ./shell-53b851ba.js ]`?  ? Rz??   ./icon-0a55c28b.js  ]`?  ?$R ??l   ./list-item-f3e9bb2b.js ]`:  ?PL`$    D ?? !?c   ????8  :   ?D ?? !?c    ????h   j    ?D ?? ??c   ????*  ,   ?D !? ?c   ????     ?D a? ??c    ????v   x    ?D ?? ??c    ????       ?D a? !?c   ????     ?D ?? !?c    ?????   ?    ?D a? ??c    ?????   ?    ?D ?? a?c   ?????       ?D ?? ??c    ????Z   \    ?D !?RbJn   aK  c    ????,   0    ?D a? ??c    ?????   ?    ?D ?? ??c    ????L   N    ?D !?Rbt?   gd  c    ????<   @    ?D a?Rb??1?   aJ  c    ????        ?D ?? !
