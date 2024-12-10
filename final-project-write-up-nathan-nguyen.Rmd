@@ -240,6 +240,12 @@ Median Age (17–21)     & 0.099         & 0.118            & 0.845            &
 
 According to the global model, all variables are statistically significant at the level of $0.05$ except for the median age variable. Furthermore, the model is able to explain about $69\%$ of the variance in the data (adjusted and non-adjusted $R^{2}$). Despite these, seemingly, good indicators, I'm skeptical about the usefulness of the model. With sufficiently large sample sizes, any trivial relationship is "statistically significant", and other methods for evaluations should be considered e.g., k-fold cross-validation, re-sampling methods, etc. Alternatively, looking at the effect sizes and confidence intervals of the parameter estimates might be more relevant to determine how "good" a model is, but this is likely domain specific, and so I have no further comments on this.
 
+A summary of the global OLS model results is contained in table 2. The global model is able to explain approximately $69\%$ of the variance of standardized median income (adjusted $R^{2}$). Among all predictors, all are statistically significant at $\alpha = 0.05$ except for median age.
+
+Although the global model has strong explanatory power ($R_{adj}^{2} \approx 69\%$), it is not without limitations. The diagnostic plots (Figure 4) indicate potential violations in the assumptions of linear regression – name heteroskedasticity (non-constant variance) and the distribution of the residuals being non-normal. Figure 4 is evidence of heteroskedasticity as there is a cone structure in the residuals. The residuals get larger for larger predicted values of $Y$. Furthermore, it can be observed that the distribution of residuals has fatter right-tails and skinnier-left tails. If the residuals were distributed normally, then the standardized residuals would be more symmetric and it would hug the theoretical line more tightly.
+
+Figure 5 also suggests that higher-order terms, or at least some transformation on the raw variables, might be necessary. The component-residual plot for the percent with internet access variable shows curvature in the data. This indicates a non-linear specification of this variable might be the proper functional form. All other graphs are relatively linear.
+
 ```{r, echo = F, eval = T, fig.cap='Global OLS Added Variable Plots', fig.align='center', out.width='100%', fig.pos='H'}
 car::avPlots(global_ols)
 ```
