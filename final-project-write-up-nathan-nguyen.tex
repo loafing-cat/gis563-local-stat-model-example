@@ -591,6 +591,83 @@ except for the percent of the population being Black and what percent of
 the population living in an urban area showed evidence for spatial
 variability under this method.
 
+The intercept (location if all other variables were homogeneous and
+zero), Gini Index, percent with internet access, percent with a
+bachelors degree or higher, and median age all have relatively small
+bandwidths and narrow bandwidth confidence intervals when compared to
+the overall number of locations, \(N = 3,100\). This indicates that the
+effects of these variables are very local i.e., the effects of these
+variables are not uniform across space, which a global OLS incorrectly
+assumes. \textbf{\textless insert figure numbers\textgreater{}}. If we
+were to plot these variables' significant local parameter estimates,
+we'd expect to see clusters and a lot of variation in parameter surface.
+Whereas more regional and uniform effects, indicated by larger
+bandwidths would have a more uniform/smooth coloring on the entire
+parameter surface.
+
+Population density, sex ratio, and the percent of the population that
+are Hispanic or Latino have larger bandwidths than the prior variables
+discussed, but they are not large enough to say they have global
+effects. For these variables, we argue that these variables have more of
+a regional effect. For these regional effects, the coloring of the
+parameter surface will be more smooth when compared to the very local
+effects, but not completely uniform which would be the case for global
+effects (large bandwidths).
+
+The percentage of the population living in an urban area and what
+percent of the population is Black are considered to have global
+effects. Their point estimate for the bandwidth make up over \(70\%\) of
+the overall number of locations. The parameter surface for these
+variables are uniform, and so no clustering will be observed.
+
+The effects of internet access are regional, given that the bandwidth is
+essentially as large as the number of locations (3,100). Having access
+to internet indicates higher median income likely an indication of more
+developed localities.
+
+The effects of having a bachelor's degree or higher are very local given
+its small bandwidths and clustering observed in the map. Having more
+education has a much stronger positive impact on one's median income in
+Colorado, New Jersey, and some parts of Ohio wen compared to Arizona and
+Idaho for example. It's also interesting to note the clustering in the
+Appalachia area as well. Some pockets with higher education attainment
+have higher income levels compared to neighbors in the area.
+
+\textbf{\textless blank text\textgreater{}}
+
+\textbf{\textless placeholder\textgreater{}}
+
+The following corrected \(\alpha\)-values were used for plotting
+significant local parameter estimated:
+
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.3} % Adjust row spacing
+\setlength{\tabcolsep}{12pt} % Adjust column spacing for a wider table
+\centering
+\caption{Corrected Alpha Levels for MGWR Variables}
+\label{tab:variable_enps}
+\begin{tabular}{lccc}
+\hline
+\textbf{Variable} & \textbf{ENP\_j} & \textbf{Alpha Corrected} \\ \hline
+Intercept                 & 164.854 & 0.000303 \\ 
+Gini Index (17–21)        & 76.129  & 0.000657 \\ 
+Population Density (Log)  & 6.687   & 0.007477 \\ 
+\% Internet Access (21)   & 149.197 & 0.000335 \\ 
+\% Bachelor's Degree or Higher (18–22) & 125.310 & 0.000399 \\ 
+\% Population in Urban Area (20) & 1.920 & 0.026042 \\ 
+Sex Ratio (Male:Female, 17–21) & 11.088 & 0.004509 \\ 
+Median Age (17–21)        & 48.350  & 0.001034 \\ 
+\% Black (2017–2021)      & 1.027   & 0.048685 \\ 
+\% Hispanic or Latino (17–21) & 8.884 & 0.005628 \\ 
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\subsection{\texorpdfstring{\ul{Comparing Global OLS
+vs.~MGWR}}{Comparing Global OLS vs.~MGWR}}\label{comparing-global-ols-vs.-mgwr}
+
 \begin{table}[H]
 \renewcommand{\arraystretch}{1.3}
 \centering
@@ -642,28 +719,17 @@ Standard Deviate          & 0.2432 \\
 \end{tabular}
 }
 \end{table}
-\begin{table}[H]
-\renewcommand{\arraystretch}{1.3} % Adjust row spacing
-\setlength{\tabcolsep}{12pt} % Adjust column spacing for a wider table
-\centering
-\caption{Corrected Alpha Levels for MGWR Variables}
-\label{tab:variable_enps}
-\begin{tabular}{lccc}
-\hline
-\textbf{Variable} & \textbf{ENP\_j} & \textbf{Alpha Corrected} \\ \hline
-Intercept                 & 164.854 & 0.000303 \\ 
-Gini Index (17–21)        & 76.129  & 0.000657 \\ 
-Population Density (Log)  & 6.687   & 0.007477 \\ 
-\% Internet Access (21)   & 149.197 & 0.000335 \\ 
-\% Bachelor's Degree or Higher (18–22) & 125.310 & 0.000399 \\ 
-\% Population in Urban Area (20) & 1.920 & 0.026042 \\ 
-Sex Ratio (Male:Female, 17–21) & 11.088 & 0.004509 \\ 
-Median Age (17–21)        & 48.350  & 0.001034 \\ 
-\% Black (2017–2021)      & 1.027   & 0.048685 \\ 
-\% Hispanic or Latino (17–21) & 8.884 & 0.005628 \\ 
-\hline
-\end{tabular}
-\end{table}
+
+\newpage
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-17-1} 
+
+}
+
+\caption{Moran Plot for MGWR Residuals}\label{fig:unnamed-chunk-17}
+\end{figure}
 
 \begin{figure}[H]
 
@@ -671,23 +737,8 @@ Median Age (17–21)        & 48.350  & 0.001034 \\
 
 }
 
-\caption{MGWR Diagnostic Plots}\label{fig:unnamed-chunk-12}
+\caption{MGWR Diagnostic Plots}\label{fig:unnamed-chunk-18}
 \end{figure}
-
-\newpage
-
-The effects of internet access are regional, given that the bandwidth is
-essentially as large as the number of locations (3,100). Having access
-to internet indicates higher median income likely an indication of more
-developed localities.
-
-The effects of having a bachelor's degree or higher are very local given
-its small bandwidths and clustering observed in the map. Having more
-education has a much stronger positive impact on one's median income in
-Colorado, New Jersey, and some parts of Ohio wen compared to Arizona and
-Idaho for example. It's also interesting to note the clustering in the
-Appalachia area as well. Some pockets with higher education attainment
-have higher income levels compared to neighbors in the area.
 
 \newpage
 
