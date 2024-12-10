@@ -3,7 +3,7 @@
     "path": "C:/Users/natha/repos/gis563-final/scripts/final-preprocess.R",
     "project_path": "scripts/final-preprocess.R",
     "type": "r_source",
-    "hash": "4199884757",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1733788596794.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "20,45",
-        "scrollLine": "0"
+        "cursorPosition": "66,9",
+        "scrollLine": "52"
     },
     "folds": "",
-    "lastKnownWriteTime": 1733788674,
+    "lastKnownWriteTime": 1733790642,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1733788674828,
+    "last_content_update": 1733790642513,
     "read_only": false,
     "read_only_alternatives": []
 }
