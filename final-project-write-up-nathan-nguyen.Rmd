@@ -240,6 +240,10 @@ Median Age (17–21)     & 0.099         & 0.118            & 0.845            &
 
 According to the global model, all variables are statistically significant at the level of $0.05$ except for the median age variable. Furthermore, the model is able to explain about $69\%$ of the variance in the data (adjusted and non-adjusted $R^{2}$). Despite these, seemingly, good indicators, I'm skeptical about the usefulness of the model. With sufficiently large sample sizes, any trivial relationship is "statistically significant", and other methods for evaluations should be considered e.g., k-fold cross-validation, re-sampling methods, etc. Alternatively, looking at the effect sizes and confidence intervals of the parameter estimates might be more relevant to determine how "good" a model is, but this is likely domain specific, and so I have no further comments on this.
 
+```{r, echo = F, eval = T, fig.cap='Global OLS Added Variable Plots', fig.align='center', out.width='100%', fig.pos='H'}
+car::avPlots(global_ols)
+```
+
 \newpage
 
 The standardized $\beta$s represent the expected change in the response variable $Y$ (in standard deviations) for a one standard deviation increase/decrease in some $k^{th}$ predictor variable while holding the other $k-1$ variables constant.
