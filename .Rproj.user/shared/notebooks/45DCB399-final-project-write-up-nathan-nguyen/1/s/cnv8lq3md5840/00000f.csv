@@ -1,0 +1,7 @@
+"0","#### load datasets"
+"0","mgwr_raw <- import(here('output-data', 'mgwr-data-raw.csv'))"
+"0",""
+"0","mgwr_stand <- import(here('output-data', 'mgwr-data-standardized.csv'))"
+"0",""
+"0","# import mgwr results to plot residuals and compute Moran's I"
+"0","mgwr_results <- import(here('mgwr-wo-monte-carlo', 'MGWR_session_results.csv'))"
