@@ -154,7 +154,9 @@ include_graphics(here('images', 'bach-higher-18-22.png'))
 
 # [Methods]{.underline}
 
-A global OLS and MGWR model was fit on the dataset and compared to one another. The variance explained in both models were compared as well as the AICc. All variables were standardized to have mean zero and and variance one. Standardization was performed in R. A linear model was fit in R using the `lm()` function while the MGWR model was fit using the MGWR 2.2 GUI software. I also calibrated an MGWR with the `mgwr` python module, but I ran into issues while extracting some data.
+A global OLS and MGWR model was fit on the dataset and compared to one another. The variance explained in both models were compared as well as the AICc. All variables were standardized to have mean zero and and variance one, and standardization was performed in R. All features in the model are of order one, and no interaction terms were considered.
+
+A linear model was fit in R using the `lm()` function while the MGWR model was fit using the MGWR 2.2 GUI software. I also calibrated an MGWR with the `mgwr` python module, but I ran into issues while extracting some data.
 
 Ad-hoc tests were used in place of a Monte Carlo test:\
 
@@ -177,8 +179,6 @@ where $\alpha^{*} = 0.05$ and the $ENP_{j}$ were obtained from the `txt` file fr
 \newpage
 
 ## [Global OLS Model]{.underline}
-
-All features in the model are of order one, and no interaction terms were considered.
 
 ```{r, eval = T, echo = F, message=F, warning = F, results='asis'}
 global_ols <- lm(med_income21 ~ gini + ln_pop_den + pct_internet_access21 + pct_bach_higher_18_22 + pct_pop_urban20 + sex_ratio17_21 + median_age17_21 + pct_blck17_21 + pct_hisplat17_21, data = mgwr_stand)
@@ -270,7 +270,7 @@ car::crPlots(global_ols)
 
 \newpage
 
-On the issue of heteroskedasticity, it is possible that spatial autocorrelation might be the factor. It's reasonable to suspect that locations are more similar to one another. In this case counties with higher median income might be clustered together. To assess this, a Moran's Test was implemented on the OLS residuals. Queen's contiguity was used to define neighbors, and row-standardized weights were chosen to give all neighbors equal weights.
+On the issue of heteroskedasticity, it is possible that spatial autocorrelation might be the factor. It's reasonable to suspect that locations are more similar to one another. In this case, counties with higher median income might be clustered together. To assess this, a Moran's Test was implemented on the OLS residuals. Queen's contiguity was used to define neighbors, and row-standardized weights were chosen to give all neighbors equal weights.
 
 The results of the Moran's test are:
 
@@ -334,7 +334,7 @@ Standard Deviate          & 28.675 \\
 
 The test is significant at the level of 0.05, and so the null hypothesis is rejected. There is sufficient evidence to suggest that positive spatial autocorrelation exists.
 
-Another way to look at this is to plot the response variable and its lagged counterparts seen in Figure 6-7:
+Another way to look at this is to plot the response variable and its lagged counterparts (similarly for the OLS residuals) seen in Figure 6-7:
 
 ```{r, echo = F, eval = T, fig.cap='Moran Plot for Median Income', fig.align='center', out.width='100%', fig.pos='H'}
 moran.plot(
@@ -391,6 +391,33 @@ Adjusted R\textsuperscript{2} & \multicolumn{5}{r}{0.869} \\
 Degree of Dependency (DoD) & \multicolumn{5}{r}{0.492} \\ \hline
 \end{tabular}
 \end{table}
+
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.3} % Adjust row spacing
+\setlength{\tabcolsep}{12pt} % Adjust column spacing for wider table
+\centering
+\caption{IQR (ad-hoc) Results}
+\label{tab:iqr_results}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Variable} & \textbf{IQR} & \textbf{SE (Global)} & \textbf{Threshold} & \textbf{Significant} \\ \hline
+Intercept                & 0.3380 & 0.010 & 0.020 & True \\ 
+Gini Index (17–21)       & 0.1420 & 0.011 & 0.022 & True \\ 
+Population Density (Log) & 0.1780 & 0.016 & 0.032 & True \\ 
+Median Age (17–21)       & 0.1290 & 0.012 & 0.024 & True \\ 
+\% Bachelor's Degree or Higher (18–22) & 0.2470 & 0.014 & 0.028 & True \\ 
+\% Black (2017–2021)     & 0.0017 & 0.012 & 0.024 & False \\ 
+\% Hispanic or Latino (17–21) & 0.1670 & 0.012 & 0.024 & True \\ 
+\% Internet Access (21)  & 0.2650 & 0.015 & 0.030 & True \\ 
+\% Population in Urban Area (20) & 0.0256 & 0.018 & 0.036 & False \\ 
+Sex Ratio (Male:Female, 17–21) & 0.0312 & 0.011 & 0.022 & True \\ 
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+Table 4 provides a summary of the MGWR calibration. This local model is able to explain about $86\%$ of the variance in the data (adjusted $R^{2}$). The IQR ad-hoc procedure was performed instead of the recommended Monte Carlo test due to time constraints. All variables except for the percent of the population being Black and what percent of the population living in an urban area showed evidence for spatial variability under this method.
 
 \begin{table}[H]
 \renewcommand{\arraystretch}{1.3}
