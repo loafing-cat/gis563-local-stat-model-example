@@ -1,0 +1,109 @@
+================================================================================
+MGWR Version: 2.2.1
+Released on: 03/20/2020
+Source code is available at: https://github.com/pysal/mgwr
+Development Team: Ziqi Li, Taylor Oshan, Stewart Fotheringham, Wei Kang, 
+Levi Wolf, Hanchen Yu, Mehak Sachdeva, and Sarah Bardin
+Spatial Analysis Research Center (SPARC)
+Arizona State University, Tempe, USA
+================================================================================
+Model type:                                                             Gaussian
+Number of observations:                                                     3100
+Number of covariates:                                                         10
+Dependent variable:                                                 med_income21
+Variable standardization:                                                    Off
+Total runtime:                                                           0:59:45
+
+Global Regression Results
+--------------------------------------------------------------------------------
+Residual sum of squares:                                                 961.468
+Log-likelihood:                                                        -2584.131
+AIC:                                                                    5188.262
+AICc:                                                                   5190.347
+R2:                                                                        0.690
+Adj. R2:                                                                   0.689
+
+Variable                                   Est.         SE  t(Est/SE)    p-value
+------------------------------------ ---------- ---------- ---------- ----------
+Intercept                                 0.000      0.010      0.000      1.000
+gini                                     -0.259      0.011    -22.595      0.000
+ln_pop_den                                0.179      0.016     11.468      0.000
+pct_internet_access21                     0.237      0.015     15.627      0.000
+pct_bach_higher_18_22                     0.578      0.014     41.660      0.000
+pct_pop_urban20                          -0.124      0.018     -6.994      0.000
+sex_ratio17_21                            0.035      0.011      3.295      0.001
+median_age17_21                           0.010      0.012      0.845      0.398
+pct_blck17_21                            -0.060      0.012     -4.929      0.000
+pct_hisplat17_21                          0.080      0.012      6.975      0.000
+
+Multiscale Geographically Weighted Regression (MGWR) Results
+--------------------------------------------------------------------------------
+Coordinates type:                                                      Projected
+Spatial kernel:                                                Adaptive bisquare
+Criterion for optimal bandwidth:                                            AICc
+Score of change (SOC) type:                                          Smoothing f
+Termination criterion for MGWR:                                          1.0e-05
+Number of iterations used:                                                    98
+
+MGWR bandwidths
+--------------------------------------------------------------------------------
+Variable                  Bandwidth      ENP_j   Adj t-val(95%)            DoD_j
+Intercept                    44.000    164.854            3.617            0.365
+gini                         92.000     76.129            3.410            0.461
+ln_pop_den                  588.000      6.687            2.677            0.764
+pct_internet_access21         44.000    149.197            3.591            0.377
+pct_bach_higher_18_22         52.000    125.310            3.545            0.399
+pct_pop_urban20            2263.000      1.920            2.227            0.919
+sex_ratio17_21              626.000     11.088            2.842            0.701
+median_age17_21             142.000     48.350            3.284            0.518
+pct_blck17_21              3098.000      1.027            1.972            0.997
+pct_hisplat17_21            473.000      8.884            2.771            0.728
+
+Bandwidth Confidence Intervals (95%)
+--------------------------------------------------------------------------------
+Intercept                                                            (44.0, 44.0)
+gini                                                                (82.0, 107.0)
+ln_pop_den                                                         (488.0, 764.0)
+pct_internet_access21                                                (44.0, 46.0)
+pct_bach_higher_18_22                                                (48.0, 57.0)
+pct_pop_urban20                                                  (1932.0, 2654.0)
+sex_ratio17_21                                                     (488.0, 764.0)
+median_age17_21                                                    (132.0, 172.0)
+pct_blck17_21                                                    (2378.0, 3098.0)
+pct_hisplat17_21                                                   (423.0, 594.0)
+
+Diagnostic Information
+--------------------------------------------------------------------------------
+Residual sum of squares:                                                 328.055
+Effective number of parameters (trace(S)):                               593.447
+Degree of freedom (n - trace(S)):                                       2506.553
+Sigma estimate:                                                            0.362
+Log-likelihood:                                                         -917.446
+Degree of Dependency (DoD):                                                0.492
+AIC:                                                                    3023.785
+AICc:                                                                   3306.439
+BIC:                                                                    6613.743
+R2:                                                                        0.894
+Adj. R2:                                                                   0.869
+
+Summary Statistics For MGWR Parameter Estimates
+--------------------------------------------------------------------------------
+Variable                        Mean        STD        Min     Median        Max
+--------------------      ---------- ---------- ---------- ---------- ----------
+Intercept                      0.007      0.272     -0.584     -0.018      0.949
+gini                          -0.206      0.107     -0.568     -0.193      0.055
+ln_pop_den                     0.040      0.112     -0.172      0.063      0.196
+pct_internet_access21          0.269      0.215     -0.390      0.230      1.143
+pct_bach_higher_18_22          0.471      0.175     -0.137      0.477      0.971
+pct_pop_urban20               -0.049      0.013     -0.071     -0.050     -0.028
+sex_ratio17_21                 0.032      0.025     -0.004      0.029      0.136
+median_age17_21                0.041      0.102     -0.297      0.060      0.258
+pct_blck17_21                 -0.226      0.001     -0.228     -0.226     -0.225
+pct_hisplat17_21               0.044      0.114     -0.195      0.067      0.252
+================================================================================
+Acknowledgement:
+We acknowledge the support of the National Science Foundation under Award 1758786 
+from the Geography and Spatial Sciences Program to A. S. Fotheringham which 
+enabled this software to be written and made freely available.
+================================================================================
+
