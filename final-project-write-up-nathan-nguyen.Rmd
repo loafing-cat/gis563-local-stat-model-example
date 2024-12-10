@@ -48,7 +48,7 @@ mgwr_raw <- import(here('output-data', 'mgwr-data-raw.csv'))
 mgwr_stand <- import(here('output-data', 'mgwr-data-standardized.csv'))
 
 # import mgwr results to plot residuals and compute Moran's I
-mgwr_results <- import(here('mgwr-wo-monte-carlo-results', 'MGWR_session_results.csv'))
+mgwr_results <- import(here('mgwr-wo-monte-carlo', 'MGWR_session_results.csv'))
 ```
 
 # [Introduction]{.underline}
@@ -304,27 +304,37 @@ weights <- nb2listw(nb, style = 'W', zero.policy = TRUE)
 ols_moran <- moran(df_merged$ols_residual, weights, length(nb), Szero(weights))[1]
 # ols_moran
 
-ols_moran_test <- moran.test(df_merged$ols_residual)
+ols_moran_test <- moran.test(df_merged$ols_residual, weights)
 ```
 
+\newpage
+
+## [MGWR Model]{.underline}
+
+```{r, echo = F, eval = T, fig.cap='MGWR Diagnostic Plots', fig.align='center', out.width='100%', fig.pos='H'}
+include_graphics(here('images', 'nonlinearity', 'local-betas-vs-x.png'))
+```
+
+\newpage
+
 ```{r, echo = F, eval = T, fig.cap='Significant Local Percent with Internet Access Estimates', fig.align='center', out.width='100%', fig.pos='H'}
-include_graphics(here('images', 'local-param' ,'sig-internet-access.png'))
+# include_graphics(here('images', 'local-param' ,'sig-internet-access.png'))
 ```
 
 The effects of internet access are regional, given that the bandwidth is essentially as large as the number of locations (3,100). Having access to internet indicates higher median income likely an indication of more developed localities.
 
 ```{r, echo = F, eval = T, fig.cap='Significant Local Percent with Bachelors Degree or Higher Estimates', fig.align='center', out.width='100%', fig.pos='H'}
-include_graphics(here('images', 'local-param' ,'sig-pct-bach-higher.png'))
+# include_graphics(here('images', 'local-param' ,'sig-pct-bach-higher.png'))
 ```
 
 The effects of having a bachelor's degree or higher are very local given its small bandwidths and clustering observed in the map. Having more education has a much stronger positive impact on one's median income in Colorado, New Jersey, and some parts of Ohio wen compared to Arizona and Idaho for example. It's also interesting to note the clustering in the Appalachia area as well. Some pockets with higher education attainment have higher income levels compared to neighbors in the area.
 
 ```{r, echo = F, eval = T, fig.cap='Significant Local Sex Ratio (Male-to-Female) Estimates', fig.align='center', out.width='100%', fig.pos='H'}
-include_graphics(here('images', 'local-param' ,'sig-sex-ratio.png'))
+# include_graphics(here('images', 'local-param' ,'sig-sex-ratio.png'))
 ```
 
 ```{r, echo = F, eval = T, fig.cap='Significant Local Median Age Estimates', fig.align='center', out.width='100%', fig.pos='H'}
-include_graphics(here('images', 'local-param' ,'sig-median-age.png'))
+# include_graphics(here('images', 'local-param' ,'sig-median-age.png'))
 ```
 
 \newpage
