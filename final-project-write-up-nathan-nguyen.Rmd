@@ -59,7 +59,7 @@ For this project, an empirical application of MGWR was performed and compared wi
 
 The model presented in this write-up will deviate slightly from the model presented in part 1. The modifications were made to accommodate critiques while presenting -- namely the use of poverty level as a predictor. This variable was replaced with the percentage of the population in a respective county that are considered in an urban area. During the initial presentation, the Monte Carlo test was still running, so no results were available.
 
-Due to time constraints, and unexpected events, a Monte Carlo test for the existence of spatial variability was not performed. The Monte Carlo test for the first version of this model did complete eventually, and it suggested that the only variable with evidence for spatial variability was the all age poverty levels in 2021. I included this variable initially because although poverty is obviously associated with income, I wanted to see whether or not the effects of poverty on median income were uniform across space or if they changed based on geography.
+Due to time constraints, and unexpected events, a Monte Carlo test for the existence of spatial variability was not performed for the model presented in this write-up. The Monte Carlo test for the first version of this model did complete eventually, and it suggested that the only variable with evidence for spatial variability was the all age poverty levels in 2021. I included this variable initially because although poverty is obviously associated with income, I wanted to see whether or not the effects of poverty on median income were uniform across space or if they changed based on geography.
 
 That being said, a rigorous test for spatial variance will not be provided for this second model presented.
 
@@ -71,7 +71,7 @@ The dataset used for analysis is an amalgamation of various datasets from the Un
 
 The area of study were United States counties, and only mainland counties were intended to be retained in the dataset. For transparency, most of Connecticut is missing and this issue was not observed until after-the-fact. The missingness is attributed to the non-standardization of FIP codes among the various datasets used. Some locations in Connecticut are not considered true counties and are "county equivalents", which was not known a-priori.
 
-After preprocessing, the final dataset consisted of 3,100 locations. Some R functions were defined in order to assist the preprocessing step – namely cleaning of FIP codes.
+After preprocessing, the final dataset consisted of 3,100 locations. Some R functions were defined in order to assist the preprocessing step – namely cleaning of FIP codes and joining all of the datasets together.
 
 The chosen response variable was the estimated median household income in the year 2021 and was provided by the Census Bureau/Department of Commerce^6^. Nine predictors were included in the models:
 
@@ -154,7 +154,7 @@ include_graphics(here('images', 'bach-higher-18-22.png'))
 
 # [Methods]{.underline}
 
-A global OLS and MGWR model was fit on the dataset and compared to one another. The variance explained in both models were compared as well as the AICc. All variables were standardized to have mean zero and and variance one. Standardization was performed in R.
+A global OLS and MGWR model was fit on the dataset and compared to one another. The variance explained in both models were compared as well as the AICc. All variables were standardized to have mean zero and and variance one. Standardization was performed in R. A linear model was fit in R using the `lm()` function while the MGWR model was fit using the MGWR 2.2 GUI software. I also calibrated an MGWR with the `mgwr` python module, but I ran into issues while extracting some data.
 
 Ad-hoc tests were used in place of a Monte Carlo test:\
 
@@ -173,6 +173,8 @@ $$
 $$
 
 where $\alpha^{*} = 0.05$ and the $ENP_{j}$ were obtained from the `txt` file from the MGWR 2.2 session.
+
+\newpage
 
 ## [Global OLS Model]{.underline}
 
@@ -238,49 +240,39 @@ Median Age (17–21)     & 0.099         & 0.118            & 0.845            &
 \end{tabular}
 \end{table}
 
-According to the global model, all variables are statistically significant at the level of $0.05$ except for the median age variable. Furthermore, the model is able to explain about $69\%$ of the variance in the data (adjusted and non-adjusted $R^{2}$). Despite these, seemingly, good indicators, I'm skeptical about the usefulness of the model. With sufficiently large sample sizes, any trivial relationship is "statistically significant", and other methods for evaluations should be considered e.g., k-fold cross-validation, re-sampling methods, etc. Alternatively, looking at the effect sizes and confidence intervals of the parameter estimates might be more relevant to determine how "good" a model is, but this is likely domain specific, and so I have no further comments on this.
-
-A summary of the global OLS model results is contained in table 2. The global model is able to explain approximately $69\%$ of the variance of standardized median income (adjusted $R^{2}$). Among all predictors, all are statistically significant at $\alpha = 0.05$ except for median age.
-
-Although the global model has strong explanatory power ($R_{adj}^{2} \approx 69\%$), it is not without limitations. The diagnostic plots (Figure 4) indicate potential violations in the assumptions of linear regression – name heteroskedasticity (non-constant variance) and the distribution of the residuals being non-normal. Figure 4 is evidence of heteroskedasticity as there is a cone structure in the residuals. The residuals get larger for larger predicted values of $Y$. Furthermore, it can be observed that the distribution of residuals has fatter right-tails and skinnier-left tails. If the residuals were distributed normally, then the standardized residuals would be more symmetric and it would hug the theoretical line more tightly.
-
-Figure 5 also suggests that higher-order terms, or at least some transformation on the raw variables, might be necessary. The component-residual plot for the percent with internet access variable shows curvature in the data. This indicates a non-linear specification of this variable might be the proper functional form. All other graphs are relatively linear.
-
 ```{r, echo = F, eval = T, fig.cap='Global OLS Added Variable Plots', fig.align='center', out.width='100%', fig.pos='H'}
 car::avPlots(global_ols)
 ```
 
-\newpage
+A summary of the global OLS model results is contained in Table 2. The global model is able to explain approximately $69\%$ of the variance of standardized median income (adjusted $R^{2}$). Among all predictors, all are statistically significant at $\alpha = 0.05$ except for median age.
 
-The standardized $\beta$s represent the expected change in the response variable $Y$ (in standard deviations) for a one standard deviation increase/decrease in some $k^{th}$ predictor variable while holding the other $k-1$ variables constant.
+Educational attainment had the largest positive effect on median income as seen in Table 2 as well as the added variable plots (Figure 3). A one standard deviation increase in the percentage of the population having a bachelors degree or higher is associated with a 0.579 standard deviation increase in the median household income with all other variables held constant. This result is non-surprising and is well supported in modern socioeconomic theories; however, it underscores the importance of education attainment and earning potential. Higher paying industries like technology, engineering, and so on oftentimes require at least a bachelors degree to be considered "qualified" for a role.
 
-The positive, and significant, set of coefficients is:
+The Gini Index, a measure of income inequality, had the largest negative effect on median income. A one standard deviation increase the index is associated with a -0.259 standard deviation decrease in the median income with all other variables held constant. This can also be observed in Figure 3.
 
-$\{\text{Population Density, Internet Access, Bachelors Degree or Higher, Sex Ratio, Percent Hispanic or Latino}\}$
+The percent with internet access and population density variables both have positive effects on the median income. This might reflect that counties with more developed infrastructure and are more densely populated have higher median incomes, which is a logical conclusion. If there's a large, and densely, populated area, then there's an incentive to invest in infrastructure. Interestingly though is that the percent of the population living in an urban area has a negative effect on the median income.
 
-For example, a one standard deviation increase in the percentage of the population with a bachelor's degree or higher is associated with a 0.58 standard deviation increase in the expected standardized median income, holding all other variables constant. This finding underscores the critical role of higher education in driving income levels and aligns with contemporary socioeconomic theories.
+The sex ratio also has a relatively large and positive effect on median income. As the number of males increase in the population, the median income increases by about 0.351 standard deviations. This could be explained by the known so-called gender pay -gap, but could also be largely attributed to what industry someone works in. After all, this dataset is very aggregated.
 
-Furthermore, among the set of positive and significant predictors, having a bachelors degree or higher has the largest absolute magnitude, suggesting that if we had a homogeneous population, education attainment might be the most important factor in one's possible earnings. This conclusion makes sense because careers that, generally, pay more are more technical and require at least a bachelors degree to obtain e.g., software engineering, banking, and so on.
+An increase in the population being composed of Black individuals is associated with a -0.059 standard deviation decrease in median income, while an increasing in the Hispanic or Latino population is associated with a 0.08 standard deviation increase in the median income. In both cases, the effects seem marginal. In both cases, the dominant reference group is the White population.
 
-On the other hand, the set of negative and significant coefficients is:
+Although the global model has strong explanatory power ($R_{adj}^{2} \approx 69\%$), it is not without limitations. The diagnostic plots (Figure 4) indicate potential violations in the assumptions of linear regression – name heteroskedasticity (non-constant variance) and the distribution of the residuals being non-normal. Figure 4 is evidence of heteroskedasticity as there is a cone structure in the residuals. The residuals get larger for larger predicted values of $Y$. Furthermore, it can be observed that the distribution of residuals has fatter right-tails and skinnier-left tails. If the residuals were distributed normally, then the standardized residuals would be more symmetric and it would hug the theoretical line more tightly.
 
-$\{\text{Gini Index, Percent of Population Living in Urban Area, Percent Population that is Black}\}$
-
-The predictor having the most negative effect is the Gini Index (income inequality). A one standard deviation increase in the Gini Index will result in a 0.26 standard deviation decrease in the expected standardized median income, holding all other variables constant. This is a logical conclusion given that if the location has high income inequality, then it would follow that the median income be lower as there is a larger spread between high income households and low income households. Since the median is a robust measure of central tendency, one would observe more households with smaller median incomes.
-
-\newpage
+Figure 5 also suggests that higher-order terms, or at least some transformation on the raw variables, might be warranted. The component-residual plot for the percent with internet access variable shows curvature in the data. This indicates a non-linear specification of this variable might be the proper functional form. All other graphs are relatively linear.
 
 ```{r, eval=T, echo=F, warning=F, message=F, fig.width=12, fig.height=8, fig.align='center', fig.cap='Global OLS Diagnostics', fig.pos='H'}
 autoplot(global_ols)
 ```
 
-Figure 3 contains various diagnostic plots for the global OLS model. Based on the residuals vs. fitted values plot, the assumption of constant variance appears to be violated i.e., the existence of heteroskedasticity is likely. This is observed by the funnel structure in the residuals for larger predicted values of $Y$. Additionally, the QQ plot of the residuals suggests a departure from normality, which is a key assumption in linear regression. The distribution of residuals has heavy right tails and skinnier left tails. A normal distribution should be roughly symmetric, and if the model was correctly specified, the observed residuals would hug the theoretical line more tightly.
+```{r, echo = F, eval = T, fig.cap='Global OLS Component Regression Plots', fig.align='center', out.width='100%', fig.pos='H'}
+car::crPlots(global_ols)
+```
 
-There are two possible scenarios:
+\newpage
 
-1.  spatial autocorrelation
+On the issue of heteroskedasticity, it is possible that spatial autocorrelation might be the factor. It's reasonable to suspect that locations are more similar to one another. In this case counties with higher median income might be clustered together. To assess this, a Moran's Test was implemented on the OLS residuals. Queen's contiguity was used to define neighbors, and row-standardized weights were chosen to give all neighbors equal weights.
 
-2.  first-order and main effects are not enough
+The results of the Moran's test are:
 
 ```{r, eval=T, echo=F, warning=F, message=F}
 # compute global ols moran's I to detect spatial autocorrelation
@@ -340,9 +332,31 @@ Standard Deviate          & 28.675 \\
 }
 \end{table}
 
-```{r, echo = F, eval = T, fig.cap='Global OLS Component Regression Plots', fig.align='center', out.width='100%', fig.pos='H'}
-car::crPlots(global_ols)
+The test is significant at the level of 0.05, and so the null hypothesis is rejected. There is sufficient evidence to suggest that positive spatial autocorrelation exists.
+
+Another way to look at this is to plot the response variable and its lagged counterparts seen in Figure 6-7:
+
+```{r, echo = F, eval = T, fig.cap='Moran Plot for Median Income', fig.align='center', out.width='100%', fig.pos='H'}
+moran.plot(
+  mgwr_stand$med_income21,
+  weights,
+  xlab = 'Median Income',
+  ylab = 'Lagged Median Income'
+)
 ```
+
+```{r, echo = F, eval = T, fig.cap='Moran Plot for Global OLS Residuals', fig.align='center', out.width='100%', fig.pos='H'}
+moran.plot(
+  global_ols$residuals,
+  weights,
+  xlab = 'Global OLS Residuals',
+  ylab = 'Lagged OLS Residuals'
+)
+```
+
+If spatial autocorrelation did not exist, the slope of the diagonal line would be approximately zero. In this case, there is clearly a positive slope, and in fact – the slope of the line is the value of Moran's I in Table 3.
+
+The implication is that maybe a global OLS model is insufficient in explaining the data generating process and that a local modeling approach might better capture the underlying processes. This is where MGWR comes into play.
 
 \newpage
 
@@ -428,6 +442,28 @@ Standard Deviate          & 0.2432 \\
 \hline
 \end{tabular}
 }
+\end{table}
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.3} % Adjust row spacing
+\setlength{\tabcolsep}{12pt} % Adjust column spacing for a wider table
+\centering
+\caption{Corrected Alpha Levels for MGWR Variables}
+\label{tab:variable_enps}
+\begin{tabular}{lccc}
+\hline
+\textbf{Variable} & \textbf{ENP\_j} & \textbf{Alpha Corrected} \\ \hline
+Intercept                 & 164.854 & 0.000303 \\ 
+Gini Index (17–21)        & 76.129  & 0.000657 \\ 
+Population Density (Log)  & 6.687   & 0.007477 \\ 
+\% Internet Access (21)   & 149.197 & 0.000335 \\ 
+\% Bachelor's Degree or Higher (18–22) & 125.310 & 0.000399 \\ 
+\% Population in Urban Area (20) & 1.920 & 0.026042 \\ 
+Sex Ratio (Male:Female, 17–21) & 11.088 & 0.004509 \\ 
+Median Age (17–21)        & 48.350  & 0.001034 \\ 
+\% Black (2017–2021)      & 1.027   & 0.048685 \\ 
+\% Hispanic or Latino (17–21) & 8.884 & 0.005628 \\ 
+\hline
+\end{tabular}
 \end{table}
 
 ```{r, echo = F, eval = T, fig.cap='MGWR Diagnostic Plots', fig.align='center', out.width='100%', fig.pos='H'}
