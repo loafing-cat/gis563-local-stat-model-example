@@ -113,7 +113,7 @@ p1 <- ggplot() +
   # ) +
   labs(
     # title = "Significant Intercept by U.S. County",
-    subtitle = 'BW = 48 : [46, 52]'
+    subtitle = 'BW = 44 : [44, 44]'
     # caption = "Data Source: American Community Survey 5-year estimates (2017-2021)"
   ) +
   theme_minimal() +
@@ -154,7 +154,7 @@ p2 <- ggplot() +
   ) +
   labs(
     # title = "Significant Gini Index by U.S. County (2021)",
-    subtitle = 'BW = 258 : [212, 383]'
+    subtitle = 'BW = 92 : [82, 107]'
     # caption = "Data Source: American Community Survey 5-year estimates (2017-2021)"
   ) +
   theme_minimal() +
@@ -196,7 +196,7 @@ p3 <- ggplot() +
   ) +
   labs(
     # title = "Significant Natural Logged Population Density by U.S. County",
-    subtitle = 'BW = 1494 : [1210, 1932]'
+    subtitle = 'BW = 588 : [488, 764]'
     # caption = "Data Source: American Community Survey 5-year estimates (2017-2021)"
   ) +
   theme_minimal() +
@@ -239,7 +239,7 @@ p4 <- ggplot() +
   ) +
   labs(
     # title = "Significant Percent Internet Access (2021) by U.S. County",
-    subtitle = 'BW = 3098 : [2654, 3098]'
+    subtitle = 'BW = 44 : [44, 46]'
     # caption = "Data Source: American Community Survey 5-year estimates (2017-2021)"
   ) +
   theme_minimal() +
@@ -288,7 +288,7 @@ p5 <- ggplot() +
   # scale_fill_continuous_diverging() +
   labs(
     # title = "Significant Percent Bachelor Degree or Higher (18-22) by U.S. County",
-    subtitle = 'BW = 44 : [44, 48]'
+    subtitle = 'BW = 52 : [48, 57]'
     # caption = "Data Source: American Community Survey 5-year estimates (2017-2021)"
   ) +
   theme_minimal() +
@@ -331,7 +331,7 @@ p7 <- ggplot() +
   ) +
   labs(
     # title = "Significant Sex Ratio (2017-21) by U.S. County",
-    subtitle = 'BW = 1361 : [764, 1656]'
+    subtitle = 'BW = 626 : [488, 764]'
     # caption = "Data Source: American Community Survey 5-year estimates (2017-2021)"
   ) +
   theme_minimal() +
@@ -373,7 +373,7 @@ p8 <- ggplot() +
   ) +
   labs(
     # title = "Significant Median Age (2017-21) by U.S. County",
-    subtitle = 'BW = 238 : [212, 278]'
+    subtitle =  'BW = 142 : [132, 172]'
     # caption = "Data Source: American Community Survey 5-year estimates (2017-2021)"
   ) +
   theme_minimal() +
@@ -402,7 +402,7 @@ ggsave(
   bg = 'white'
 )
 
-# Plot for Percent Black (2017-21)
+# Plot for hispanic Black (2017-21)
 p9 <- ggplot() +
   geom_sf(data = df_p_value_merged, aes(fill = beta_pct_hisplat17_21_sig), color = 'black') +
   geom_sf(data = us_states, fill = NA, color = "white", size = 0.2) +
@@ -415,7 +415,7 @@ p9 <- ggplot() +
   ) +
   labs(
     # title = "Significant Percent Black (2017-21) by U.S. County",
-    subtitle = 'BW = 3098.000 : [2378, 3098]'
+    subtitle = 'BW = 473 : [423, 594]'
     # caption = "Data Source: American Community Survey 5-year estimates (2017-2021)"
   ) +
   theme_minimal() +
