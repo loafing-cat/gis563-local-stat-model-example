@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.8)  10 DEC 2024 19:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.8)  10 DEC 2024 19:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -195,6 +195,12 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+) (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/svgnam.def
+File: svgnam.def 2024/09/29 v3.02 Predefined colors according to SVG 1.1 (UK)
+) (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/x11nam.def
+File: x11nam.def 2024/09/29 v3.02 Predefined colors according to Unix/X11 (UK)
 ) (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
@@ -516,7 +522,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
 \BKM@id=\count328
 ))
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 140.
+Package hyperref Info: Option `colorlinks' set `true' on input line 133.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 145.
 (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
@@ -526,37 +533,37 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 ) (./final-project-write-up-nathan-nguyen.aux)
 \openout1 = `final-project-write-up-nathan-nguyen.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Info: Redefining \microtypecontext on input line 140.
-Package microtype Info: Applying patch `item' on input line 140.
-Package microtype Info: Applying patch `toc' on input line 140.
-Package microtype Info: Applying patch `eqnum' on input line 140.
-Package microtype Info: Applying patch `footnote' on input line 140.
-Package microtype Info: Applying patch `verbatim' on input line 140.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Info: Redefining \microtypecontext on input line 145.
+Package microtype Info: Applying patch `item' on input line 145.
+Package microtype Info: Applying patch `toc' on input line 145.
+Package microtype Info: Applying patch `eqnum' on input line 145.
+Package microtype Info: Applying patch `footnote' on input line 145.
+Package microtype Info: Applying patch `verbatim' on input line 145.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 140.
+LaTeX Info: Redefining \showhyphens on input line 145.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -602,36 +609,36 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 140.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 142.
+Package hyperref Info: Link coloring ON on input line 145.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 147.
 (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 142.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 147.
 (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 142.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 147.
 (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 142.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 147.
 (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 142.
+(Font)              <12> on input line 147.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 142.
+(Font)              <8> on input line 147.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 142.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 142.
+(Font)              <6> on input line 147.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 147.
 (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 142.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 147.
 (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -644,18 +651,18 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 [2]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 190.
+(Font)              <10> on input line 195.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 190.
+(Font)              <7> on input line 195.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 190.
+(Font)              <5> on input line 195.
 
 
 [3]
 <images/median-income21.png, id=34, 1156.32pt x 578.16pt>
 File: images/median-income21.png Graphic file (type png)
 <use images/median-income21.png>
-Package pdftex.def Info: images/median-income21.png  used on input line 261.
+Package pdftex.def Info: images/median-income21.png  used on input line 266.
 (pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
 
 
@@ -663,16 +670,16 @@ Package pdftex.def Info: images/median-income21.png  used on input line 261.
 <images/bach-higher-18-22.png, id=40, 1156.32pt x 578.16pt>
 File: images/bach-higher-18-22.png Graphic file (type png)
 <use images/bach-higher-18-22.png>
-Package pdftex.def Info: images/bach-higher-18-22.png  used on input line 289.
+Package pdftex.def Info: images/bach-higher-18-22.png  used on input line 294.
 (pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
 
 
 [5 <./images/bach-higher-18-22.png>]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 306.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 311.
 (c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
+Underfull \hbox (badness 10000) in paragraph at lines 316--317
 
  []
 
@@ -682,7 +689,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 311--312
 <final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-6-1.pdf, id=57, 469.755pt x 325.215pt>
 File: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (type pdf)
 <use final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-6-1.pdf>
-Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-6-1.pdf  used on input line 364.
+Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-6-1.pdf  used on input line 369.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 
@@ -692,12 +699,12 @@ Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex
 <final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-7-1.pdf, id=78, 867.24pt x 578.16pt>
 File: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type pdf)
 <use final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-7-1.pdf>
-Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-7-1.pdf  used on input line 441.
+Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-7-1.pdf  used on input line 446.
 (pdftex.def)             Requested size: 469.75827pt x 313.17216pt.
 <final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-8-1.pdf, id=79, 469.755pt x 325.215pt>
 File: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
 <use final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-8-1.pdf>
-Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-8-1.pdf  used on input line 450.
+Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-8-1.pdf  used on input line 455.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 
@@ -707,7 +714,7 @@ Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex
 <final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-10-1.pdf, id=100, 469.755pt x 325.215pt>
 File: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type pdf)
 <use final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-10-1.pdf>
-Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-10-1.pdf  used on input line 502.
+Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-10-1.pdf  used on input line 508.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 
@@ -715,14 +722,14 @@ Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex
 <final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-11-1.pdf, id=106, 469.755pt x 325.215pt>
 File: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type pdf)
 <use final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-11-1.pdf>
-Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-11-1.pdf  used on input line 511.
+Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-11-1.pdf  used on input line 517.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 
 [12 <./final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-10-1.pdf>]
 
 [13 <./final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-11-1.pdf>]
-Overfull \hbox (11.55186pt too wide) in paragraph at lines 568--583
+Overfull \hbox (11.55186pt too wide) in paragraph at lines 574--589
  [][] 
  []
 
@@ -734,17 +741,17 @@ Overfull \hbox (11.55186pt too wide) in paragraph at lines 568--583
 <images/local-param/sig-intercept.png, id=140, 1156.32pt x 578.16pt>
 File: images/local-param/sig-intercept.png Graphic file (type png)
 <use images/local-param/sig-intercept.png>
-Package pdftex.def Info: images/local-param/sig-intercept.png  used on input line 654.
+Package pdftex.def Info: images/local-param/sig-intercept.png  used on input line 660.
 (pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
 <images/local-param/sig-gini.png, id=141, 1156.32pt x 578.16pt>
 File: images/local-param/sig-gini.png Graphic file (type png)
 <use images/local-param/sig-gini.png>
-Package pdftex.def Info: images/local-param/sig-gini.png  used on input line 668.
+Package pdftex.def Info: images/local-param/sig-gini.png  used on input line 674.
 (pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
 <images/local-param/sig-ln-pop-den.png, id=142, 1156.32pt x 578.16pt>
 File: images/local-param/sig-ln-pop-den.png Graphic file (type png)
 <use images/local-param/sig-ln-pop-den.png>
-Package pdftex.def Info: images/local-param/sig-ln-pop-den.png  used on input line 686.
+Package pdftex.def Info: images/local-param/sig-ln-pop-den.png  used on input line 692.
 (pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
 
 
@@ -752,7 +759,7 @@ Package pdftex.def Info: images/local-param/sig-ln-pop-den.png  used on input li
 <images/local-param/sig-internet-access.png, id=149, 1156.32pt x 578.16pt>
 File: images/local-param/sig-internet-access.png Graphic file (type png)
 <use images/local-param/sig-internet-access.png>
-Package pdftex.def Info: images/local-param/sig-internet-access.png  used on input line 708.
+Package pdftex.def Info: images/local-param/sig-internet-access.png  used on input line 714.
 (pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
 
 
@@ -760,12 +767,12 @@ Package pdftex.def Info: images/local-param/sig-internet-access.png  used on inp
 <images/local-param/sig-pct-bach-higher.png, id=156, 1156.32pt x 578.16pt>
 File: images/local-param/sig-pct-bach-higher.png Graphic file (type png)
 <use images/local-param/sig-pct-bach-higher.png>
-Package pdftex.def Info: images/local-param/sig-pct-bach-higher.png  used on input line 723.
+Package pdftex.def Info: images/local-param/sig-pct-bach-higher.png  used on input line 729.
 (pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
 <images/local-param/sig-sex-ratio.png, id=157, 1156.32pt x 578.16pt>
 File: images/local-param/sig-sex-ratio.png Graphic file (type png)
 <use images/local-param/sig-sex-ratio.png>
-Package pdftex.def Info: images/local-param/sig-sex-ratio.png  used on input line 741.
+Package pdftex.def Info: images/local-param/sig-sex-ratio.png  used on input line 747.
 (pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
 
 
@@ -773,12 +780,12 @@ Package pdftex.def Info: images/local-param/sig-sex-ratio.png  used on input lin
 <images/local-param/sig-median-age.png, id=164, 1156.32pt x 578.16pt>
 File: images/local-param/sig-median-age.png Graphic file (type png)
 <use images/local-param/sig-median-age.png>
-Package pdftex.def Info: images/local-param/sig-median-age.png  used on input line 754.
+Package pdftex.def Info: images/local-param/sig-median-age.png  used on input line 760.
 (pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
 <images/local-param/sig-pct-hisplat.png, id=165, 1156.32pt x 578.16pt>
 File: images/local-param/sig-pct-hisplat.png Graphic file (type png)
 <use images/local-param/sig-pct-hisplat.png>
-Package pdftex.def Info: images/local-param/sig-pct-hisplat.png  used on input line 768.
+Package pdftex.def Info: images/local-param/sig-pct-hisplat.png  used on input line 774.
 (pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
 
 
@@ -790,7 +797,7 @@ Package pdftex.def Info: images/local-param/sig-pct-hisplat.png  used on input l
 <images/ols-mgwr-residual-combined.png, id=184, 1300.86pt x 722.7pt>
 File: images/ols-mgwr-residual-combined.png Graphic file (type png)
 <use images/ols-mgwr-residual-combined.png>
-Package pdftex.def Info: images/ols-mgwr-residual-combined.png  used on input line 867.
+Package pdftex.def Info: images/ols-mgwr-residual-combined.png  used on input line 873.
 (pdftex.def)             Requested size: 469.75827pt x 260.9768pt.
 
 
@@ -798,7 +805,7 @@ Package pdftex.def Info: images/ols-mgwr-residual-combined.png  used on input li
 <final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-21-1.pdf, id=191, 469.755pt x 325.215pt>
 File: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-21-1.pdf Graphic file (type pdf)
 <use final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-21-1.pdf>
-Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-21-1.pdf  used on input line 878.
+Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-21-1.pdf  used on input line 884.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 
@@ -806,18 +813,18 @@ Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex
 <images/nonlinearity/local-betas-vs-x.png, id=202, 1734.48pt x 1734.48pt>
 File: images/nonlinearity/local-betas-vs-x.png Graphic file (type png)
 <use images/nonlinearity/local-betas-vs-x.png>
-Package pdftex.def Info: images/nonlinearity/local-betas-vs-x.png  used on input line 892.
+Package pdftex.def Info: images/nonlinearity/local-betas-vs-x.png  used on input line 898.
 (pdftex.def)             Requested size: 469.74503pt x 469.74503pt.
 
 
 [24 <./images/nonlinearity/local-betas-vs-x.png>]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 940.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 947.
 
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 959--965
-[]$\T1/lmr/m/n/10 (+20) https : / / data . census . gov / table / ACSDT5Y2022 . B28011 ? q = Telephone$[], Com-puter, and In-ter-net
+Underfull \hbox (badness 10000) in paragraph at lines 966--972
+[][]$\T1/lmr/m/n/10 (+20) https : / / data . census . gov / table / ACSDT5Y2022 . B28011 ? q = Telephone$[][], Com-puter, and In-ter-net
  []
 
 
@@ -829,18 +836,18 @@ L3 programming layer <2024-11-02>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 16049 strings out of 475229
- 262818 string characters out of 5765147
- 699770 words of memory out of 5000000
- 38433 multiletter control sequences out of 15000+600000
+ 16567 strings out of 475229
+ 271725 string characters out of 5765147
+ 737613 words of memory out of 5000000
+ 38943 multiletter control sequences out of 15000+600000
  618837 words of font info for 156 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  77i,13n,81p,1033b,472s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on final-project-write-up-nathan-nguyen.pdf (26 pages, 55250066 bytes).
+Output written on final-project-write-up-nathan-nguyen.pdf (26 pages, 55250322 bytes).
 PDF statistics:
- 346 PDF objects out of 1000 (max. 8388607)
- 263 compressed objects within 3 object streams
- 77 named destinations out of 1000 (max. 500000)
- 30883 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 342 PDF objects out of 1000 (max. 8388607)
+ 259 compressed objects within 3 object streams
+ 76 named destinations out of 1000 (max. 500000)
+ 30875 words of extra memory for PDF output out of 35830 (max. 10000000)
 

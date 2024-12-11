@@ -1,6 +1,7 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
 ]{article}
@@ -124,7 +125,11 @@
 \urlstyle{same}
 \hypersetup{
   pdfauthor={Nathan A. Nguyen},
-  hidelinks,
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
   pdfcreator={LaTeX via pandoc}}
 
 \title{\vspace{5cm}
@@ -462,7 +467,8 @@ locations are more similar to one another. In this case, counties with
 higher median income might be clustered together. To assess this, a
 Moran's Test was implemented on the OLS residuals. Queen's contiguity
 was used to define neighbors, and row-standardized weights were chosen
-to give all neighbors equal weights.
+to give all neighbors equal weights. A zero policy was enabled due to
+some missing counties -- namely in Connecticut.
 
 The results of the Moran's test are:
 
@@ -835,7 +841,7 @@ with the MGWR generated residuals, and the same procedure for the
 Moran's test was implemented on the MGWR residuals. The test failed to
 reject the null hypothesis, and so there is insufficient evidence to
 suggest any sort of spatial autocorrelation in the MGWR residuals. Refer
-to Table 8 for details. Furthermore, figure 8 is a mapping of the OLS
+to Table 8 for details. Furthermore, figure 16 is a mapping of the OLS
 and MGWR residuals. Although subtle, the clustering of the residuals has
 been mediated with MGWR.
 
@@ -882,7 +888,7 @@ Standard Deviate          & 0.2432 \\
 \caption{Moran Plot for MGWR Residuals}\label{fig:unnamed-chunk-21}
 \end{figure}
 
-A Moran plot was also generated for the MGWR residuals (figure 9). The
+A Moran plot was also generated for the MGWR residuals (figure 17). The
 slope of the line is now zero, indicating no spatial autocorrelation.
 
 \newpage
@@ -896,7 +902,7 @@ slope of the line is now zero, indicating no spatial autocorrelation.
 \caption{MGWR Diagnostic Plots}\label{fig:unnamed-chunk-22}
 \end{figure}
 
-Figure 10 shows various plots of the local \(\hat{\beta}\)s against the
+Figure 18 shows various plots of the local \(\hat{\beta}\)s against the
 the standardized values for each predictor. Upon inspection, first-order
 specifications for population density, percent with internet access, and
 percent of population that are Hispanic or Latino may not be
@@ -906,17 +912,15 @@ issues, but that is for future work.
 
 \newpage
 
-\section{\texorpdfstring{\ul{Conclusions}}{Conclusions}}\label{conclusions}
+\section{\texorpdfstring{\ul{Conclusions/Improvements}}{Conclusions/Improvements}}\label{conclusionsimprovements}
 
-\subsection{\texorpdfstring{\ul{Improvements}}{Improvements}}\label{improvements}
-
-If I were to write a real paper on something like this, I'd probably
-change my response variable to something that reflects discretionary
-income more e.g., the median household income after adjusting for
-housing costs. While people in California, New York, and Washington
-might make a lot more than say, someone living in Alabama, people living
-in California, New York, or Washington likely have a much larger housing
-cost when compared to someone living in Alabama.
+If I were to write a real paper on something like this, I'd change my
+response variable to something that reflects discretionary income more
+e.g., the median household income after adjusting for housing costs.
+While people in California, New York, and Washington might make a lot
+more than say, someone living in Alabama, people living in California,
+New York, or Washington likely have a much larger housing cost when
+compared to someone living in Alabama.
 
 A transformation of some of the predictor variables might be warranted
 given some non-linearity observed in both OLS and MGWR diagnostic plots.
@@ -928,6 +932,9 @@ MGWR and/or helped validated existing theories in the literature. A
 review would have also provided a better foundation for variable
 selection in the models e.g., including employment industry variables,
 and so on.
+
+Finally, a Monte Carlo test should have been implemented to detect
+spatial variability.
 
 For those who are interesting in creating the maps in R, please refer to
 my Github Repo:

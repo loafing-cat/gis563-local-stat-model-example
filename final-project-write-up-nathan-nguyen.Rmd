@@ -12,6 +12,7 @@ output:
 header-includes:
   - "\\usepackage{amsmath}"
   - \usepackage{sectsty} \allsectionsfont{\centering}
+urlcolor: blue
 ---
 
 \newpage
@@ -270,7 +271,7 @@ car::crPlots(global_ols)
 
 \newpage
 
-On the issue of heteroskedasticity, it is possible that spatial autocorrelation might be the factor. It's reasonable to suspect that locations are more similar to one another. In this case, counties with higher median income might be clustered together. To assess this, a Moran's Test was implemented on the OLS residuals. Queen's contiguity was used to define neighbors, and row-standardized weights were chosen to give all neighbors equal weights.
+On the issue of heteroskedasticity, it is possible that spatial autocorrelation might be the factor. It's reasonable to suspect that locations are more similar to one another. In this case, counties with higher median income might be clustered together. To assess this, a Moran's Test was implemented on the OLS residuals. Queen's contiguity was used to define neighbors, and row-standardized weights were chosen to give all neighbors equal weights. A zero policy was enabled due to some missing counties – namely in Connecticut.
 
 The results of the Moran's test are:
 
@@ -541,7 +542,7 @@ MGWR has superior explanatory power when compared to global OLS ($R_{adj-MGWR}^{
 
 \newpage
 
-The existence of spatial autocorrelation was again explored, but now with the MGWR generated residuals, and the same procedure for the Moran's test was implemented on the MGWR residuals. The test failed to reject the null hypothesis, and so there is insufficient evidence to suggest any sort of spatial autocorrelation in the MGWR residuals. Refer to Table 8 for details. Furthermore, figure 8 is a mapping of the OLS and MGWR residuals. Although subtle, the clustering of the residuals has been mediated with MGWR.
+The existence of spatial autocorrelation was again explored, but now with the MGWR generated residuals, and the same procedure for the Moran's test was implemented on the MGWR residuals. The test failed to reject the null hypothesis, and so there is insufficient evidence to suggest any sort of spatial autocorrelation in the MGWR residuals. Refer to Table 8 for details. Furthermore, figure 16 is a mapping of the OLS and MGWR residuals. Although subtle, the clustering of the residuals has been mediated with MGWR.
 
 \begin{table}[H]
 \renewcommand{\arraystretch}{1.3} % Adjust row spacing
@@ -581,7 +582,7 @@ moran.plot(
 )
 ```
 
-A Moran plot was also generated for the MGWR residuals (figure 9). The slope of the line is now zero, indicating no spatial autocorrelation.
+A Moran plot was also generated for the MGWR residuals (figure 17). The slope of the line is now zero, indicating no spatial autocorrelation.
 
 \newpage
 
@@ -589,19 +590,19 @@ A Moran plot was also generated for the MGWR residuals (figure 9). The slope of 
 include_graphics(here('images', 'nonlinearity', 'local-betas-vs-x.png'))
 ```
 
-Figure 10 shows various plots of the local $\hat{\beta}$s against the the standardized values for each predictor. Upon inspection, first-order specifications for population density, percent with internet access, and percent of population that are Hispanic or Latino may not be appropriate. Polynomial terms, a transformation of the raw variables before standardization, or interaction terms might mediate non-linearity issues, but that is for future work.
+Figure 18 shows various plots of the local $\hat{\beta}$s against the the standardized values for each predictor. Upon inspection, first-order specifications for population density, percent with internet access, and percent of population that are Hispanic or Latino may not be appropriate. Polynomial terms, a transformation of the raw variables before standardization, or interaction terms might mediate non-linearity issues, but that is for future work.
 
 \newpage
 
-# [Conclusions]{.underline}
+# [Conclusions/Improvements]{.underline}
 
-## [Improvements]{.underline}
-
-If I were to write a real paper on something like this, I'd probably change my response variable to something that reflects discretionary income more e.g., the median household income after adjusting for housing costs. While people in California, New York, and Washington might make a lot more than say, someone living in Alabama, people living in California, New York, or Washington likely have a much larger housing cost when compared to someone living in Alabama.
+If I were to write a real paper on something like this, I'd change my response variable to something that reflects discretionary income more e.g., the median household income after adjusting for housing costs. While people in California, New York, and Washington might make a lot more than say, someone living in Alabama, people living in California, New York, or Washington likely have a much larger housing cost when compared to someone living in Alabama.
 
 A transformation of some of the predictor variables might be warranted given some non-linearity observed in both OLS and MGWR diagnostic plots.
 
 Finally, a thorough literature review would have been beneficial in order to understand the unique socioeconomic profiles of the US counties. This would have aided in better understanding the results of MGWR and/or helped validated existing theories in the literature. A review would have also provided a better foundation for variable selection in the models e.g., including employment industry variables, and so on.
+
+Finally, a Monte Carlo test should have been implemented to detect spatial variability.
 
 For those who are interesting in creating the maps in R, please refer to my Github Repo: <https://github.com/loafing-cat/gis563-local-stat-model-example>.
 
