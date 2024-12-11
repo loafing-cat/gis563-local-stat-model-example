@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.8)  10 DEC 2024 17:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.8)  10 DEC 2024 18:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -722,7 +722,7 @@ Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex
 [12 <./final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-10-1.pdf>]
 
 [13 <./final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-11-1.pdf>]
-Overfull \hbox (11.55186pt too wide) in paragraph at lines 569--584
+Overfull \hbox (11.55186pt too wide) in paragraph at lines 568--583
  [][] 
  []
 
@@ -731,62 +731,116 @@ Overfull \hbox (11.55186pt too wide) in paragraph at lines 569--584
 [14]
 
 [15]
+<images/local-param/sig-intercept.png, id=139, 1156.32pt x 578.16pt>
+File: images/local-param/sig-intercept.png Graphic file (type png)
+<use images/local-param/sig-intercept.png>
+Package pdftex.def Info: images/local-param/sig-intercept.png  used on input line 628.
+(pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
+<images/local-param/sig-gini.png, id=140, 1156.32pt x 578.16pt>
+File: images/local-param/sig-gini.png Graphic file (type png)
+<use images/local-param/sig-gini.png>
+Package pdftex.def Info: images/local-param/sig-gini.png  used on input line 642.
+(pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
+<images/local-param/sig-ln-pop-den.png, id=141, 1156.32pt x 578.16pt>
+File: images/local-param/sig-ln-pop-den.png Graphic file (type png)
+<use images/local-param/sig-ln-pop-den.png>
+Package pdftex.def Info: images/local-param/sig-ln-pop-den.png  used on input line 660.
+(pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
 
-[16]
-<images/ols-mgwr-residual-combined.png, id=146, 1300.86pt x 722.7pt>
+
+[16 <./images/local-param/sig-intercept.png> <./images/local-param/sig-gini.png>]
+<images/local-param/sig-internet-access.png, id=148, 1156.32pt x 578.16pt>
+File: images/local-param/sig-internet-access.png Graphic file (type png)
+<use images/local-param/sig-internet-access.png>
+Package pdftex.def Info: images/local-param/sig-internet-access.png  used on input line 682.
+(pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
+
+
+[17 <./images/local-param/sig-ln-pop-den.png>]
+<images/local-param/sig-pct-bach-higher.png, id=155, 1156.32pt x 578.16pt>
+File: images/local-param/sig-pct-bach-higher.png Graphic file (type png)
+<use images/local-param/sig-pct-bach-higher.png>
+Package pdftex.def Info: images/local-param/sig-pct-bach-higher.png  used on input line 698.
+(pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
+
+
+[18 <./images/local-param/sig-internet-access.png> <./images/local-param/sig-pct-bach-higher.png>]
+<images/local-param/sig-sex-ratio.png, id=162, 1156.32pt x 578.16pt>
+File: images/local-param/sig-sex-ratio.png Graphic file (type png)
+<use images/local-param/sig-sex-ratio.png>
+Package pdftex.def Info: images/local-param/sig-sex-ratio.png  used on input line 716.
+(pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
+<images/local-param/sig-median-age.png, id=163, 1156.32pt x 578.16pt>
+File: images/local-param/sig-median-age.png Graphic file (type png)
+<use images/local-param/sig-median-age.png>
+Package pdftex.def Info: images/local-param/sig-median-age.png  used on input line 727.
+(pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
+<images/local-param/sig-pct-hisplat.png, id=164, 1156.32pt x 578.16pt>
+File: images/local-param/sig-pct-hisplat.png Graphic file (type png)
+<use images/local-param/sig-pct-hisplat.png>
+Package pdftex.def Info: images/local-param/sig-pct-hisplat.png  used on input line 736.
+(pdftex.def)             Requested size: 469.75385pt x 234.87692pt.
+
+
+[19 <./images/local-param/sig-sex-ratio.png> <./images/local-param/sig-median-age.png>]
+
+[20 <./images/local-param/sig-pct-hisplat.png>]
+
+[21]
+<images/ols-mgwr-residual-combined.png, id=184, 1300.86pt x 722.7pt>
 File: images/ols-mgwr-residual-combined.png Graphic file (type png)
 <use images/ols-mgwr-residual-combined.png>
-Package pdftex.def Info: images/ols-mgwr-residual-combined.png  used on input line 752.
+Package pdftex.def Info: images/ols-mgwr-residual-combined.png  used on input line 853.
 (pdftex.def)             Requested size: 469.75827pt x 260.9768pt.
 
 
-[17 <./images/ols-mgwr-residual-combined.png>]
-<final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-17-1.pdf, id=154, 469.755pt x 325.215pt>
-File: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-17-1.pdf Graphic file (type pdf)
-<use final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-17-1.pdf>
-Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-17-1.pdf  used on input line 763.
+[22 <./images/ols-mgwr-residual-combined.png>]
+<final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-21-1.pdf, id=191, 469.755pt x 325.215pt>
+File: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-21-1.pdf Graphic file (type pdf)
+<use final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-21-1.pdf>
+Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-21-1.pdf  used on input line 864.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 
-[18 <./final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-17-1.pdf>]
-<images/nonlinearity/local-betas-vs-x.png, id=165, 1734.48pt x 1734.48pt>
+[23 <./final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-21-1.pdf>]
+<images/nonlinearity/local-betas-vs-x.png, id=202, 1734.48pt x 1734.48pt>
 File: images/nonlinearity/local-betas-vs-x.png Graphic file (type png)
 <use images/nonlinearity/local-betas-vs-x.png>
-Package pdftex.def Info: images/nonlinearity/local-betas-vs-x.png  used on input line 777.
+Package pdftex.def Info: images/nonlinearity/local-betas-vs-x.png  used on input line 878.
 (pdftex.def)             Requested size: 469.74503pt x 469.74503pt.
 
 
-[19 <./images/nonlinearity/local-betas-vs-x.png>]
+[24 <./images/nonlinearity/local-betas-vs-x.png>]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 825.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 926.
 
 
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 844--850
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 945--951
 []$\T1/lmr/m/n/10 (+20) https : / / data . census . gov / table / ACSDT5Y2022 . B28011 ? q = Telephone$[], Com-puter, and In-ter-net
  []
 
 
 
-[21] (./final-project-write-up-nathan-nguyen.aux)
+[26] (./final-project-write-up-nathan-nguyen.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-11-02>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15938 strings out of 475229
- 258714 string characters out of 5765147
- 699199 words of memory out of 5000000
- 38337 multiletter control sequences out of 15000+600000
+ 16047 strings out of 475229
+ 262798 string characters out of 5765147
+ 699770 words of memory out of 5000000
+ 38433 multiletter control sequences out of 15000+600000
  618765 words of font info for 155 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 77i,13n,81p,1033b,451s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 77i,13n,81p,1033b,472s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on final-project-write-up-nathan-nguyen.pdf (21 pages, 26714139 bytes).
+Output written on final-project-write-up-nathan-nguyen.pdf (26 pages, 55249529 bytes).
 PDF statistics:
- 306 PDF objects out of 1000 (max. 8388607)
- 236 compressed objects within 3 object streams
- 64 named destinations out of 1000 (max. 500000)
- 30843 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 346 PDF objects out of 1000 (max. 8388607)
+ 263 compressed objects within 3 object streams
+ 77 named destinations out of 1000 (max. 500000)
+ 30883 words of extra memory for PDF output out of 35830 (max. 10000000)
 

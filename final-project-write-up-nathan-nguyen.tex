@@ -559,7 +559,6 @@ Adjusted R\textsuperscript{2} & \multicolumn{5}{r}{0.869} \\
 Degree of Dependency (DoD) & \multicolumn{5}{r}{0.492} \\ \hline
 \end{tabular}
 \end{table}
-
 \begin{table}[H]
 \renewcommand{\arraystretch}{1.3} % Adjust row spacing
 \setlength{\tabcolsep}{12pt} % Adjust column spacing for wider table
@@ -600,44 +599,146 @@ bandwidths and narrow bandwidth confidence intervals when compared to
 the overall number of locations, \(N = 3,100\). This indicates that the
 effects of these variables are very local i.e., the effects of these
 variables are not uniform across space, which a global OLS incorrectly
-assumes. \textbf{\textless insert figure numbers\textgreater{}}. If we
-were to plot these variables' significant local parameter estimates,
-we'd expect to see clusters and a lot of variation in parameter surface.
-Whereas more regional and uniform effects, indicated by larger
-bandwidths would have a more uniform/smooth coloring on the entire
-parameter surface.
+assumes. Refer to figures 8, 9, 11, and 12. If we were to plot these
+variables' significant local parameter estimates, we'd expect to see
+clusters and a lot of variation in parameter surface. Whereas more
+regional and uniform effects, indicated by larger bandwidths would have
+a more uniform/smooth coloring on the entire parameter surface.
 
-Population density, sex ratio, and the percent of the population that
-are Hispanic or Latino have larger bandwidths than the prior variables
-discussed, but they are not large enough to say they have global
-effects. For these variables, we argue that these variables have more of
-a regional effect. For these regional effects, the coloring of the
-parameter surface will be more smooth when compared to the very local
-effects, but not completely uniform which would be the case for global
-effects (large bandwidths).
+Population density, sex ratio, median age, and the percent of the
+population that are Hispanic or Latino have larger bandwidths than the
+prior variables discussed, but they are not large enough to say they
+have global effects. For these variables, we argue that these variables
+have more of a regional effect. For these regional effects, the coloring
+of the parameter surface will be more smooth when compared to the very
+local effects, but not completely uniform which would be the case for
+global effects (large bandwidths). Refer to figures 10, 13, 14, and 15.
 
 The percentage of the population living in an urban area and what
 percent of the population is Black are considered to have global
 effects. Their point estimate for the bandwidth make up over \(70\%\) of
 the overall number of locations. The parameter surface for these
-variables are uniform, and so no clustering will be observed.
+variables are uniform, and so no clustering will be observed. These two
+variables are non-significant according to the ad-hoc procedure.
+
+\newpage
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{images/local-param/sig-intercept} 
+
+}
+
+\caption{Significant Local Intercept Estimates}\label{fig:unnamed-chunk-12}
+\end{figure}
+
+If all other variables were zero and assume homogeneity, then location
+plays a role in median income. Counties in south Texas and in Virginia
+have higher median incomes when compared to some counties in Kansas,
+Missouri, and Arkansas, and this is just location dependent.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{images/local-param/sig-gini} 
+
+}
+
+\caption{Significant Local Gini Index Estimates}\label{fig:unnamed-chunk-13}
+\end{figure}
+
+The effects of income inequality (Gini Index) is local as seen in its
+small bandwidth and variation in the parameter surface. Although an
+increase in income inequality is associated with a decrease in median
+income all around, the effects are not the same every in the United
+States. For some reason, an increase in inequality is more severe in the
+Great Lakes region, in the eastern Virginian counties, Maryland, and
+Delaware when compared to southern California, some parts of Arizona,
+and Texas.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{images/local-param/sig-ln-pop-den} 
+
+}
+
+\caption{Significant Local Population Density Estimates}\label{fig:unnamed-chunk-14}
+\end{figure}
+
+Population density appears to be more of a regional effect given its
+larger bandwidth. This observation can also be seen in the coloring of
+the parameter surface. Although there are obvious variations in the
+surface, they're much smoother/gradual when compared to the surface for
+Gini or education attainment for example.
+
+What is interesting is that west of Illinois, an increase in population
+density appears to be associated with an increase in median income while
+an increase in population density appears to be associated in an
+decrease in median income west of Ohio -- specifically near the US
+capital and the entire northeast of the country. The effects appear to
+be marginal though.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{images/local-param/sig-internet-access} 
+
+}
+
+\caption{Significant Local Percent with Internet Access Estimates}\label{fig:unnamed-chunk-15}
+\end{figure}
 
 The effects of internet access are regional, given that the bandwidth is
 essentially as large as the number of locations (3,100). Having access
 to internet indicates higher median income likely an indication of more
 developed localities.
 
-The effects of having a bachelor's degree or higher are very local given
-its small bandwidths and clustering observed in the map. Having more
-education has a much stronger positive impact on one's median income in
-Colorado, New Jersey, and some parts of Ohio wen compared to Arizona and
-Idaho for example. It's also interesting to note the clustering in the
-Appalachia area as well. Some pockets with higher education attainment
-have higher income levels compared to neighbors in the area.
+The effects of internet access are apparently local as well.
 
-\textbf{\textless blank text\textgreater{}}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{images/local-param/sig-pct-bach-higher} 
+
+}
+
+\caption{Significant Local Bachelors Degree or Higher Estimates}\label{fig:unnamed-chunk-16}
+\end{figure}
+
+\textbf{\textless{}}The effects of having a bachelor's degree or higher
+are very local given its small bandwidths and clustering observed in the
+map. Having more education has a much stronger positive impact on one's
+median income in Colorado, New Jersey, and some parts of Ohio wen
+compared to Arizona and Idaho for example. It's also interesting to note
+the clustering in the Appalachia area as well. Some pockets with higher
+education attainment have higher income levels compared to neighbors in
+the area.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{images/local-param/sig-sex-ratio} 
+
+}
+
+\caption{Significant Local Sex Ratio Estimates}\label{fig:unnamed-chunk-17}
+\end{figure}
 
 \textbf{\textless placeholder\textgreater{}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{images/local-param/sig-median-age} 
+
+}
+
+\caption{Significant Local Median Age Estimates}\label{fig:unnamed-chunk-18}
+\end{figure}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{images/local-param/sig-pct-hisplat} 
+
+}
+
+\caption{Significant Local Percent Population Hispanic or Latino Estimates}\label{fig:unnamed-chunk-19}
+\end{figure}
 
 The following corrected \(\alpha\)-values were used for plotting
 significant local parameter estimated:
@@ -753,18 +854,18 @@ Standard Deviate          & 0.2432 \\
 
 }
 
-\caption{Global OLS Residuals vs. MGWR Residuals}\label{fig:unnamed-chunk-16}
+\caption{Global OLS Residuals vs. MGWR Residuals}\label{fig:unnamed-chunk-20}
 \end{figure}
 
 \newpage
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=1\linewidth]{final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-17-1} 
+{\centering \includegraphics[width=1\linewidth]{final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-21-1} 
 
 }
 
-\caption{Moran Plot for MGWR Residuals}\label{fig:unnamed-chunk-17}
+\caption{Moran Plot for MGWR Residuals}\label{fig:unnamed-chunk-21}
 \end{figure}
 
 A Moran plot was also generated for the MGWR residuals (figure 9). The
@@ -778,7 +879,7 @@ slope of the line is now zero, indicating no spatial autocorrelation.
 
 }
 
-\caption{MGWR Diagnostic Plots}\label{fig:unnamed-chunk-18}
+\caption{MGWR Diagnostic Plots}\label{fig:unnamed-chunk-22}
 \end{figure}
 
 Figure 10 shows various plots of the local \(\hat{\beta}\)s against the
