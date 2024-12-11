@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.8)  10 DEC 2024 16:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.8)  10 DEC 2024 17:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -736,7 +736,7 @@ Overfull \hbox (11.55186pt too wide) in paragraph at lines 569--584
 <images/ols-mgwr-residual-combined.png, id=146, 1300.86pt x 722.7pt>
 File: images/ols-mgwr-residual-combined.png Graphic file (type png)
 <use images/ols-mgwr-residual-combined.png>
-Package pdftex.def Info: images/ols-mgwr-residual-combined.png  used on input line 743.
+Package pdftex.def Info: images/ols-mgwr-residual-combined.png  used on input line 752.
 (pdftex.def)             Requested size: 469.75827pt x 260.9768pt.
 
 
@@ -744,12 +744,12 @@ Package pdftex.def Info: images/ols-mgwr-residual-combined.png  used on input li
 <final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-17-1.pdf, id=154, 469.755pt x 325.215pt>
 File: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-17-1.pdf Graphic file (type pdf)
 <use final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-17-1.pdf>
-Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-17-1.pdf  used on input line 754.
+Package pdftex.def Info: final-project-write-up-nathan-nguyen_files/figure-latex/unnamed-chunk-17-1.pdf  used on input line 763.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 <images/nonlinearity/local-betas-vs-x.png, id=155, 1734.48pt x 1734.48pt>
 File: images/nonlinearity/local-betas-vs-x.png Graphic file (type png)
 <use images/nonlinearity/local-betas-vs-x.png>
-Package pdftex.def Info: images/nonlinearity/local-betas-vs-x.png  used on input line 763.
+Package pdftex.def Info: images/nonlinearity/local-betas-vs-x.png  used on input line 772.
 (pdftex.def)             Requested size: 469.74503pt x 469.74503pt.
 
 
@@ -757,11 +757,11 @@ Package pdftex.def Info: images/nonlinearity/local-betas-vs-x.png  used on input
 
 [19 <./images/nonlinearity/local-betas-vs-x.png>]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 803.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 812.
 
 
 [20]
-Underfull \hbox (badness 10000) in paragraph at lines 822--828
+Underfull \hbox (badness 10000) in paragraph at lines 831--837
 []$\T1/lmr/m/n/10 (+20) https : / / data . census . gov / table / ACSDT5Y2022 . B28011 ? q = Telephone$[], Com-puter, and In-ter-net
  []
 
@@ -774,15 +774,15 @@ L3 programming layer <2024-11-02>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15936 strings out of 475229
- 258694 string characters out of 5765147
+ 15938 strings out of 475229
+ 258714 string characters out of 5765147
  699199 words of memory out of 5000000
  38337 multiletter control sequences out of 15000+600000
- 618682 words of font info for 154 fonts, out of 8000000 for 9000
+ 618765 words of font info for 155 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  77i,13n,81p,1033b,451s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb><c:/Users/natha/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on final-project-write-up-nathan-nguyen.pdf (21 pages, 26712497 bytes).
+Output written on final-project-write-up-nathan-nguyen.pdf (21 pages, 26712945 bytes).
 PDF statistics:
  306 PDF objects out of 1000 (max. 8388607)
  236 compressed objects within 3 object streams

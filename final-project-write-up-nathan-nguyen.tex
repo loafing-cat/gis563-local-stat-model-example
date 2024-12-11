@@ -715,6 +715,15 @@ the data when compared to OLS, and so the trade-off is worthwhile.
 
 \newpage
 
+The existence of spatial autocorrelation was explored with the MGWR
+generated residuals. The same procedure for the Moran's test was
+implemented on the MGWR residuals. The test failed to reject the null
+hypothesis, and so there is insufficient evidence to suggest any sort of
+spatial autocorrelation in the MGWR residuals. Refer to Table 8 for
+details. Furthermore, figure 8 is shows a mapping of the OLS and MGWR
+residuals. Although subtle, the clustering of the residuals has been
+mediated with MGWR.
+
 \begin{table}[H]
 \renewcommand{\arraystretch}{1.3} % Adjust row spacing
 \setlength{\tabcolsep}{12pt} % Adjust column spacing for wider table
@@ -744,7 +753,7 @@ Standard Deviate          & 0.2432 \\
 
 }
 
-\caption{Global OLS Residuals vs. MGWR Residauls}\label{fig:unnamed-chunk-16}
+\caption{Global OLS Residuals vs. MGWR Residuals}\label{fig:unnamed-chunk-16}
 \end{figure}
 
 \newpage
