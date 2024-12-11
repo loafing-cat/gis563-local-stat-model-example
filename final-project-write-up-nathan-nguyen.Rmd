@@ -244,7 +244,7 @@ Median Age (17–21)     & 0.099         & 0.118            & 0.845            &
 car::avPlots(global_ols)
 ```
 
-A summary of the global OLS model results is contained in Table 2. The global model is able to explain approximately $69\%$ of the variance of standardized median income (adjusted $R^{2}$). Among all predictors, all are statistically significant at $\alpha = 0.05$ except for median age.
+A summary of the global OLS model results is contained in Table 2. The global model is able to explain approximately $69\%$ of the variance of standardized median income (adjusted $R^{2}$). Among all predictors, all are statistically significant at $\alpha = 0.05$ except for median age. A side comment is that with sufficiently large sample sizes, any non-trivial effects will be statistically significant. Effect sizes might be a better measure of model quality in the future.
 
 Educational attainment had the largest positive effect on median income as seen in Table 2 as well as the added variable plots (Figure 3). A one standard deviation increase in the percentage of the population having a bachelors degree or higher is associated with a 0.579 standard deviation increase in the median household income with all other variables held constant. This result is non-surprising and is well supported in modern socioeconomic theories; however, it underscores the importance of education attainment and earning potential. Higher paying industries like technology, engineering, and so on oftentimes require at least a bachelors degree to be considered "qualified" for a role.
 
@@ -507,6 +507,13 @@ Adjusted R\textsuperscript{2} & 0.689 & 0.869 \\
 Degree of Dependency (DoD) & N/A & 0.492 \\ \hline
 \end{tabular}
 \end{table}
+
+Table 7 is a summary comparing the global OLS and MGWR models. The sign of the parameter estimates are consistent between the global OLS and MGWR framework indicating that the global model does agree with the direction of the effects that the predictor variables have when compared to MGWR.
+
+MGWR has superior explanatory power when compared to global OLS ($R_{adj-MGWR}^{2} \approx 87\% > R_{adj-OLS}^{2} \approx 69\%$). Despite having far more parameters than OLS, MGWR's AICc is smaller than OLS' AICc ($AICc_{MGWR} \approx 3306 < AICc_{OLS} \approx 5190$). So while being a more complicated model, it does a better job at explaining the data when compared to OLS, and so the trade-off is worthwhile.
+
+\newpage
+
 \begin{table}[H]
 \renewcommand{\arraystretch}{1.3} % Adjust row spacing
 \setlength{\tabcolsep}{12pt} % Adjust column spacing for wider table
@@ -531,7 +538,7 @@ Standard Deviate          & 0.2432 \\
 \end{table}
 
 ```{r, echo = F, eval = T, fig.cap='Global OLS Residuals vs. MGWR Residauls', fig.align='center', out.width='100%', fig.pos='H'}
-# insert OLS vs. MGWR Residuals
+include_graphics(here('images', 'ols-mgwr-residual-combined.png'))
 ```
 
 \newpage
