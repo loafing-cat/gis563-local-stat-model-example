@@ -621,6 +621,32 @@ the overall number of locations. The parameter surface for these
 variables are uniform, and so no clustering will be observed. These two
 variables are non-significant according to the ad-hoc procedure.
 
+The following corrected \(\alpha\)-values were used for plotting
+significant local parameter estimated:
+
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.3} % Adjust row spacing
+\setlength{\tabcolsep}{12pt} % Adjust column spacing for a wider table
+\centering
+\caption{Corrected Alpha Levels for MGWR Variables}
+\label{tab:variable_enps}
+\begin{tabular}{lccc}
+\hline
+\textbf{Variable} & \textbf{ENP\_j} & \textbf{Alpha Corrected} \\ \hline
+Intercept                 & 164.854 & 0.000303 \\ 
+Gini Index (17–21)        & 76.129  & 0.000657 \\ 
+Population Density (Log)  & 6.687   & 0.007477 \\ 
+\% Internet Access (21)   & 149.197 & 0.000335 \\ 
+\% Bachelor's Degree or Higher (18–22) & 125.310 & 0.000399 \\ 
+\% Population in Urban Area (20) & 1.920 & 0.026042 \\ 
+Sex Ratio (Male:Female, 17–21) & 11.088 & 0.004509 \\ 
+Median Age (17–21)        & 48.350  & 0.001034 \\ 
+\% Black (2017–2021)      & 1.027   & 0.048685 \\ 
+\% Hispanic or Latino (17–21) & 8.884 & 0.005628 \\ 
+\hline
+\end{tabular}
+\end{table}
+
 \newpage
 
 \begin{figure}[H]
@@ -649,7 +675,7 @@ Missouri, and Arkansas, and this is just location dependent.
 The effects of income inequality (Gini Index) is local as seen in its
 small bandwidth and variation in the parameter surface. Although an
 increase in income inequality is associated with a decrease in median
-income all around, the effects are not the same every in the United
+income all around, the effects are not the same everywhere in the United
 States. For some reason, an increase in inequality is more severe in the
 Great Lakes region, in the eastern Virginian counties, Maryland, and
 Delaware when compared to southern California, some parts of Arizona,
@@ -686,12 +712,11 @@ be marginal though.
 \caption{Significant Local Percent with Internet Access Estimates}\label{fig:unnamed-chunk-15}
 \end{figure}
 
-The effects of internet access are regional, given that the bandwidth is
-essentially as large as the number of locations (3,100). Having access
-to internet indicates higher median income likely an indication of more
-developed localities.
-
-The effects of internet access are apparently local as well.
+The effects of internet access are apparently local as well given its
+small bandwidth. For some reason internet access has the strongest
+positive effects in Colorado. Nonetheless, having internet access is
+associated with an increase in median income all around, although many
+of the local estimates are non-significant.
 
 \begin{figure}[H]
 
@@ -702,14 +727,14 @@ The effects of internet access are apparently local as well.
 \caption{Significant Local Bachelors Degree or Higher Estimates}\label{fig:unnamed-chunk-16}
 \end{figure}
 
-\textbf{\textless{}}The effects of having a bachelor's degree or higher
-are very local given its small bandwidths and clustering observed in the
-map. Having more education has a much stronger positive impact on one's
-median income in Colorado, New Jersey, and some parts of Ohio wen
-compared to Arizona and Idaho for example. It's also interesting to note
-the clustering in the Appalachia area as well. Some pockets with higher
-education attainment have higher income levels compared to neighbors in
-the area.
+The effects of having a bachelors degree or higher are very local given
+its small bandwidths and clustering observed in the map. Educational
+attainment has a much stronger positive effect on one's median income in
+New Jersey, some parts of Vermont, eastern Pennsylvania, and northern
+Ohio when compared to Arizona, Montana, and Idaho. The darker structure
+in the Appalachia region is also interesting to observe as well. The
+parameter surface for having a bachelors degree or higher is a great
+example of local effects.
 
 \begin{figure}[H]
 
@@ -720,7 +745,9 @@ the area.
 \caption{Significant Local Sex Ratio Estimates}\label{fig:unnamed-chunk-17}
 \end{figure}
 
-\textbf{\textless placeholder\textgreater{}}
+The effects of having more males than females (sex ratio) are regional,
+although are only really noticeable mainly in North/South Dakota,
+Minnesota Texas, Louisiana, southern New Mexico, and southern Arizona.
 
 \begin{figure}[H]
 
@@ -731,6 +758,11 @@ the area.
 \caption{Significant Local Median Age Estimates}\label{fig:unnamed-chunk-18}
 \end{figure}
 
+Median age is only significant in a small percentage of the population.
+An increase in the median age is associated with a decrease in median
+income near El Paso, Texas as well as in Maine, but it is associated
+with an increase in median income near Washington DC.
+
 \begin{figure}[H]
 
 {\centering \includegraphics[width=1\linewidth]{images/local-param/sig-pct-hisplat} 
@@ -740,31 +772,13 @@ the area.
 \caption{Significant Local Percent Population Hispanic or Latino Estimates}\label{fig:unnamed-chunk-19}
 \end{figure}
 
-The following corrected \(\alpha\)-values were used for plotting
-significant local parameter estimated:
-
-\begin{table}[H]
-\renewcommand{\arraystretch}{1.3} % Adjust row spacing
-\setlength{\tabcolsep}{12pt} % Adjust column spacing for a wider table
-\centering
-\caption{Corrected Alpha Levels for MGWR Variables}
-\label{tab:variable_enps}
-\begin{tabular}{lccc}
-\hline
-\textbf{Variable} & \textbf{ENP\_j} & \textbf{Alpha Corrected} \\ \hline
-Intercept                 & 164.854 & 0.000303 \\ 
-Gini Index (17–21)        & 76.129  & 0.000657 \\ 
-Population Density (Log)  & 6.687   & 0.007477 \\ 
-\% Internet Access (21)   & 149.197 & 0.000335 \\ 
-\% Bachelor's Degree or Higher (18–22) & 125.310 & 0.000399 \\ 
-\% Population in Urban Area (20) & 1.920 & 0.026042 \\ 
-Sex Ratio (Male:Female, 17–21) & 11.088 & 0.004509 \\ 
-Median Age (17–21)        & 48.350  & 0.001034 \\ 
-\% Black (2017–2021)      & 1.027   & 0.048685 \\ 
-\% Hispanic or Latino (17–21) & 8.884 & 0.005628 \\ 
-\hline
-\end{tabular}
-\end{table}
+The effects of an increasing in the Hispanic or Latino population are
+regional, which makes sense. That being said, an increase in Hispanic or
+Latino population is associated with a decrease in median income in the
+south-west of the country, but these effects appear to be marginal. An
+interesting observation is that an increase in the Hispanic or Latino
+population has a strong positive effect in the rust-belt region of the
+country.
 
 \newpage
 
