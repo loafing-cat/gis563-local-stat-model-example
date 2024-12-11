@@ -65,7 +65,7 @@ mgwr_data <- foth_voting2020 %>%
   inner_join(acs17_21_dem, by = 'fips_cd') %>% 
   inner_join(acs17_21_gini, by = 'fips_cd') %>% 
   select(
-    fips_cd, county_name.x, state_cd.x, proj_X, proj_Y, med_income21, gini, ln_pop_den, pct_internet_access21,
+    fips_cd, county_name.x, state_cd.x, proj_X, proj_Y, med_income21, gini, ln_pop_den, #pct_internet_access21,
     pct_bach_higher_18_22, pct_pop_urban20, sex_ratio17_21,
     median_age17_21, pct_blck17_21, pct_hisplat17_21
   ) %>% 
